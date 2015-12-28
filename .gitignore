@@ -1,0 +1,27 @@
+## Directory-based project format:
+.idea/
+
+# Gradle
+.gradle/
+build/
+gradlew
+gradlew.bat
+settings.gradle
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# IntelliJ
+/out/
+*.iml
+
+# Java
+*.class
+
+# Package Files
+*.jar
+!gradle-wrapper.jar
+*.war
+*.ear
+META-INF/
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
