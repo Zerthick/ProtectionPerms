@@ -24,6 +24,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
 public class SecondaryListener {
@@ -33,7 +34,8 @@ public class SecondaryListener {
         String blockName = event.getTargetBlock().getState().getType().getName();
         if (!player.hasPermission("protectionPerms.block.interact." + blockName + ".secondary")) {
             event.setCancelled(true);
-            player.sendMessage(Texts.of(TextColors.RED, "You don't have permission to secondary interact with " + blockName + '!'));
+            player.sendMessage(ChatTypes.ACTION_BAR,
+                    Texts.of(TextColors.RED, "You don't have permission to secondary interact with " + blockName + '!'));
         }
     }
 }

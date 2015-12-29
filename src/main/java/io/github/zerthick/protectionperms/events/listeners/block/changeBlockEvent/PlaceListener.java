@@ -26,6 +26,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
 import java.util.List;
@@ -40,7 +41,8 @@ public class PlaceListener {
             String blockName = snapshot.getState().getType().getName();
             if (!player.hasPermission("protectionPerms.block.place." + blockName)) {
                 event.setCancelled(true);
-                player.sendMessage(Texts.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));
+                player.sendMessage(ChatTypes.ACTION_BAR,
+                        Texts.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));
                 break;
             }
         }

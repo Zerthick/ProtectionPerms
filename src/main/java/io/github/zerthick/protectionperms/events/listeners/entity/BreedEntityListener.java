@@ -24,6 +24,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.BreedEntityEvent;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
 public class BreedEntityListener {
@@ -33,7 +34,8 @@ public class BreedEntityListener {
         String entityName = event.getTargetEntity().getType().getName();
         if (!player.hasPermission("protectionPerms.entity.breed." + entityName)) {
             event.setCancelled(true);
-            player.sendMessage(Texts.of(TextColors.RED, "You don't have permission to breed " + entityName + '!'));
+            player.sendMessage(ChatTypes.ACTION_BAR,
+                    Texts.of(TextColors.RED, "You don't have permission to breed " + entityName + "s!"));
         }
     }
 }
