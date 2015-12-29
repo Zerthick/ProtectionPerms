@@ -17,21 +17,11 @@
  * along with ProtectionPerms.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-group 'zerthick.github.io'
-version '1.0.0'
+package io.github.zerthick.protectionperms.events.listeners;
 
-apply plugin: 'java'
+import java.util.List;
 
-sourceCompatibility = 1.8
+public interface ListenerManager {
 
-repositories {
-    mavenCentral()
-    maven {
-        name = 'sponge'
-        url = 'http://repo.spongepowered.org/maven'
-    }
-}
-
-dependencies {
-    compile 'org.spongepowered:spongeapi:2.1-SNAPSHOT'
+    public List<Object> getListeners();
 }

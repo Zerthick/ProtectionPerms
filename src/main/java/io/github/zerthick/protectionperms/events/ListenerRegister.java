@@ -1,13 +1,33 @@
+/*
+ * Copyright (C) 2015  Zerthick
+ *
+ * This file is part of ProtectionPerms.
+ *
+ * ProtectionPerms is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtectionPerms is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtectionPerms.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package io.github.zerthick.protectionperms.events;
 
-import io.github.zerthick.protectionperms.events.listeners.DamageEntityListener;
-import io.github.zerthick.protectionperms.events.listeners.DropItemListener;
-import io.github.zerthick.protectionperms.events.listeners.changeBlockEvent.BreakListener;
-import io.github.zerthick.protectionperms.events.listeners.changeBlockEvent.PlaceListener;
-import io.github.zerthick.protectionperms.events.listeners.useItemStackEvent.StartListener;
+import io.github.zerthick.protectionperms.events.listeners.ListenerManager;
+import io.github.zerthick.protectionperms.events.listeners.block.BlockListenerManager;
+import io.github.zerthick.protectionperms.events.listeners.entity.EntityListenerManager;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.plugin.PluginContainer;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class ListenerRegister {
 
@@ -18,22 +38,18 @@ public class ListenerRegister {
     }
 
     public void registerListeners() {
+
+        Set<ListenerManager> listenerManagerSet = new HashSet<>();
+        listenerManagerSet.add(new BlockListenerManager());
+        listenerManagerSet.add(new EntityListenerManager());
+
         EventManager eventManager = Sponge.getGame().getEventManager();
         Object instance = container.getInstance().get();
 
-        eventManager.registerListeners(instance, new BreakListener());
-        eventManager.registerListeners(instance, new PlaceListener());
-        eventManager.registerListeners(instance, new DamageEntityListener());
-        eventManager.registerListeners(instance,
-                new io.github.zerthick.protectionperms.events.listeners.interactBlockEvent.PrimaryListener());
-        eventManager.registerListeners(instance,
-                new io.github.zerthick.protectionperms.events.listeners.interactBlockEvent.SecondaryListener());
-        eventManager.registerListeners(instance,
-                new io.github.zerthick.protectionperms.events.listeners.interactEntityEvent.PrimaryListener());
-        eventManager.registerListeners(instance,
-                new io.github.zerthick.protectionperms.events.listeners.interactEntityEvent.SecondaryListener());
-        eventManager.registerListeners(instance,
-                new StartListener());
-        eventManager.registerListeners(instance, new DropItemListener());
+        for(ListenerManager listenerManager : listenerManagerSet){
+            for(Object listener : listenerManager.getListeners()){
+                eventManager.registerListeners(instance, listener);
+            }
+        }
     }
 }

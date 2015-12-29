@@ -17,21 +17,19 @@
  * along with ProtectionPerms.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-group 'zerthick.github.io'
-version '1.0.0'
+package io.github.zerthick.protectionperms;
 
-apply plugin: 'java'
+import org.slf4j.Logger;
 
-sourceCompatibility = 1.8
+public class DebugClass {
 
-repositories {
-    mavenCentral()
-    maven {
-        name = 'sponge'
-        url = 'http://repo.spongepowered.org/maven'
+    static Logger logger;
+
+    public DebugClass(Logger logger) {
+        this.logger = logger;
     }
-}
 
-dependencies {
-    compile 'org.spongepowered:spongeapi:2.1-SNAPSHOT'
+    public static void out(String msg){
+        logger.info(msg);
+    }
 }
