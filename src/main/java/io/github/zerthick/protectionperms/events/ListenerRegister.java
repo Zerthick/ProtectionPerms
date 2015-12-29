@@ -22,6 +22,7 @@ package io.github.zerthick.protectionperms.events;
 import io.github.zerthick.protectionperms.events.listeners.ListenerManager;
 import io.github.zerthick.protectionperms.events.listeners.block.BlockListenerManager;
 import io.github.zerthick.protectionperms.events.listeners.entity.EntityListenerManager;
+import io.github.zerthick.protectionperms.events.listeners.item.ItemListenerManager;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.plugin.PluginContainer;
@@ -42,6 +43,7 @@ public class ListenerRegister {
         Set<ListenerManager> listenerManagerSet = new HashSet<>();
         listenerManagerSet.add(new BlockListenerManager());
         listenerManagerSet.add(new EntityListenerManager());
+        listenerManagerSet.add(new ItemListenerManager());
 
         EventManager eventManager = Sponge.getGame().getEventManager();
         Object instance = container.getInstance().get();
