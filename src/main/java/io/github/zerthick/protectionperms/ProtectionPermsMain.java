@@ -28,13 +28,14 @@ import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
-@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.0.1")
+@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.1.0")
 public class ProtectionPermsMain {
 
     @Inject
     private Logger logger;
     @Inject
     private PluginContainer instance;
+
     private ListenerRegister listenerRegister;
 
     public Logger getLogger() {
@@ -43,9 +44,7 @@ public class ProtectionPermsMain {
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
-
-        new DebugClass(logger);
-
+        
         //Register Event Listeners
         listenerRegister = new ListenerRegister(instance);
         listenerRegister.registerListeners();
@@ -55,6 +54,4 @@ public class ProtectionPermsMain {
                 instance.getName() + " version " + instance.getVersion()
                         + " enabled!");
     }
-
-
 }
