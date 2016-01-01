@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -24,11 +24,9 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.cause.entity.damage.source.EntityDamageSource;
 import org.spongepowered.api.event.entity.DamageEntityEvent;
 import org.spongepowered.api.event.filter.cause.First;
-import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
-import org.spongepowered.api.text.title.Title;
-import org.spongepowered.api.text.title.TitleBuilder;
 
 public class DamageEntityListener {
 
@@ -40,7 +38,7 @@ public class DamageEntityListener {
             if (!player.hasPermission("protectionPerms.entity.damage." + entityName + ".deal")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Texts.of(TextColors.RED, "You don't have permission to damage " + entityName + "s!"));
+                        Text.of(TextColors.RED, "You don't have permission to damage " + entityName + "s!"));
             }
         }
     }

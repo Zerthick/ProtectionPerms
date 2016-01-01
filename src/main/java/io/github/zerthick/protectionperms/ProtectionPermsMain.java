@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -28,7 +28,7 @@ import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
-@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.1.0")
+@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.1.1")
 public class ProtectionPermsMain {
 
     @Inject

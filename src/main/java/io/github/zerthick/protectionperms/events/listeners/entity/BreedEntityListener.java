@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -23,7 +23,7 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.BreedEntityEvent;
 import org.spongepowered.api.event.filter.cause.First;
-import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
@@ -35,7 +35,7 @@ public class BreedEntityListener {
         if (!player.hasPermission("protectionPerms.entity.breed." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Texts.of(TextColors.RED, "You don't have permission to breed " + entityName + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to breed " + entityName + "s!"));
         }
     }
 }

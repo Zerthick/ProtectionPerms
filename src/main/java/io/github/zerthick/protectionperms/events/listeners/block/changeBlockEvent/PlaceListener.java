@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -25,7 +25,7 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 import org.spongepowered.api.event.filter.cause.First;
-import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
@@ -42,7 +42,7 @@ public class PlaceListener {
             if (!player.hasPermission("protectionPerms.block.place." + blockName)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Texts.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));
                 break;
             }
         }

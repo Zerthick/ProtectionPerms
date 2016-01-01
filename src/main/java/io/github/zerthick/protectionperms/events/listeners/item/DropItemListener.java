@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -24,7 +24,7 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
 import org.spongepowered.api.item.inventory.ItemStackSnapshot;
-import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class DropItemListener {
             String itemName = snapshot.getType().getName();
             if (!player.hasPermission("protectionPerms.item.drop." + itemName)) {
                 event.setCancelled(true);
-                player.sendMessage(Texts.of(TextColors.RED, "You don't have permission to drop " + itemName + '!'));
+                player.sendMessage(Text.of(TextColors.RED, "You don't have permission to drop " + itemName + '!'));
                 break;
             }
         }

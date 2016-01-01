@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -23,7 +23,7 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.event.item.inventory.UseItemStackEvent;
-import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 
 public class StartListener {
@@ -33,7 +33,7 @@ public class StartListener {
         String itemName = event.getItemStackInUse().getOriginal().getType().getName();
         if (!player.hasPermission("protectionPerms.item.use." + itemName)) {
             event.setCancelled(true);
-            player.sendMessage(Texts.of(TextColors.RED, "You don't have permission to use " + itemName + '!'));
+            player.sendMessage(Text.of(TextColors.RED, "You don't have permission to use " + itemName + '!'));
         }
     }
 }
