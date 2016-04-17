@@ -28,7 +28,7 @@ import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
-@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.2.1")
+@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.2.0")
 public class ProtectionPermsMain {
 
     @Inject
