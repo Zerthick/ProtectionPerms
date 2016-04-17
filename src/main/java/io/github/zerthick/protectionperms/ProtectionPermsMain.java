@@ -28,7 +28,7 @@ import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
-@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.1.1")
+@Plugin(id = "ProtectionPerms", name = "ProtectionPerms", version = "0.2.1")
 public class ProtectionPermsMain {
 
     @Inject
@@ -51,7 +51,7 @@ public class ProtectionPermsMain {
 
         // Log Start Up to Console
         getLogger().info(
-                instance.getName() + " version " + instance.getVersion()
+                instance.getName() + " version " + instance.getVersion().orElse("")
                         + " enabled!");
     }
 }

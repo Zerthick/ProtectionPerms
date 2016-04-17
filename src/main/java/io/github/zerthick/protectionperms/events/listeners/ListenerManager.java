@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -23,5 +23,5 @@ import java.util.List;
 
 public interface ListenerManager {
 
-    public List<Object> getListeners();
+     List<Object> getListeners();
 }
