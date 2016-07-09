@@ -30,7 +30,7 @@ public class StartListener {
 
     @Listener
     public void onItemUse(UseItemStackEvent.Start event, @First Player player) {
-        String itemName = event.getItemStackInUse().getOriginal().getType().getName();
+        String itemName = event.getItemStackInUse().getType().getName();
         if (!player.hasPermission("protectionPerms.item.use." + itemName)) {
             event.setCancelled(true);
             player.sendMessage(Text.of(TextColors.RED, "You don't have permission to use " + itemName + '!'));
