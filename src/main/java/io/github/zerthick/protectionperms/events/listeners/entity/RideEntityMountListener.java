@@ -21,16 +21,16 @@ package io.github.zerthick.protectionperms.events.listeners.entity;
 
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.entity.MountEntityEvent;
+import org.spongepowered.api.event.entity.RideEntityEvent;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
-public class MountEntityListener {
+public class RideEntityMountListener {
 
     @Listener
-    public void onEntityMount(MountEntityEvent event, @First Player player) {
+    public void onEntityMount(RideEntityEvent.Mount event, @First Player player) {
         String entityName = event.getTargetEntity().getType().getName();
         if (!player.hasPermission("protectionPerms.entity.mount." + entityName)) {
             event.setCancelled(true);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015  Zerthick
+ * Copyright (C) 2016  Zerthick
  *
  * This file is part of ProtectionPerms.
  *
@@ -36,7 +36,7 @@ public class EntityListenerManager implements ListenerManager{
         listeners.add(new PrimaryListener());
         listeners.add(new SecondaryListener());
         listeners.add(new DamageEntityListener());
-        listeners.add(new MountEntityListener());
+        listeners.add(new RideEntityMountListener());
         listeners.add(new TameEntityListener());
         listeners.add(new BreedEntityListener());
     }
