@@ -17,12 +17,13 @@
  * along with ProtectionPerms.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-group 'zerthick.github.io'
-version '0.2.0'
+plugins {
+    id 'org.spongepowered.plugin' version '0.6'
+    id 'java'
+    id "com.qixalite.spongestart" version "1.4.6"
+}
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
+group 'io.github.zerthick'
 
 repositories {
     mavenCentral()
@@ -32,6 +33,16 @@ repositories {
     }
 }
 
+spongestart {
+    eula true
+
+    //optional configs
+    spongeVanillaBuild 'LATEST'
+    spongeForgeBuild 'LATEST'
+    forgeServerFolder 'run/forge'
+    vanillaServerFolder 'run/vanilla'
+}
+
 dependencies {
-    compile 'org.spongepowered:spongeapi:4.1.0-SNAPSHOT'
+    compile 'org.spongepowered:spongeapi:5.0.0-SNAPSHOT'
 }
