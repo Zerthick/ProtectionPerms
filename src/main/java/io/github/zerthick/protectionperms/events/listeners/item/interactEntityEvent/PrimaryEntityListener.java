@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactEntityEvent;
 
+import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
@@ -33,8 +34,22 @@ import java.util.Optional;
 public class PrimaryEntityListener {
 
     @Listener
-    public void onInteractEntityPrimary(InteractEntityEvent.Primary event, @First Player player) {
-        Optional<ItemStack> itemStackOptional = player.getItemInHand();
+    public void onInteractEntityPrimaryMain(InteractEntityEvent.Primary.MainHand event, @First Player player) {
+        Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
+        if(itemStackOptional.isPresent()) {
+            String entityName = event.getTargetEntity().getType().getName();
+            String itemName = itemStackOptional.get().getItem().getName();
+            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + entityName + ".primary")) {
+                event.setCancelled(true);
+                player.sendMessage(ChatTypes.ACTION_BAR,
+                        Text.of(TextColors.RED, "You don't have permission to primary use " + itemName + " on " + entityName + '!'));
+            }
+        }
+    }
+
+    @Listener
+    public void onInteractEntityPrimaryOff(InteractEntityEvent.Primary.OffHand event, @First Player player) {
+        Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
             String entityName = event.getTargetEntity().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();

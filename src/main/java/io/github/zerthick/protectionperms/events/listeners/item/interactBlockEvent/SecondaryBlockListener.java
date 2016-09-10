@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent;
 
+import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
@@ -33,8 +34,22 @@ import java.util.Optional;
 public class SecondaryBlockListener {
 
     @Listener
-    public void onInteractBlockSecondary(InteractBlockEvent.Secondary event, @First Player player) {
-        Optional<ItemStack> itemStackOptional = player.getItemInHand();
+    public void onInteractBlockSecondaryMain(InteractBlockEvent.Secondary.MainHand event, @First Player player) {
+        Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
+        if(itemStackOptional.isPresent()) {
+            String blockName = event.getTargetBlock().getState().getType().getName();
+            String itemName = itemStackOptional.get().getItem().getName();
+            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + blockName + ".secondary")) {
+                event.setCancelled(true);
+                player.sendMessage(ChatTypes.ACTION_BAR,
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + blockName + '!'));
+            }
+        }
+    }
+
+    @Listener
+    public void onInteractBlockSecondaryOff(InteractBlockEvent.Secondary.OffHand event, @First Player player) {
+        Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
             String blockName = event.getTargetBlock().getState().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();
