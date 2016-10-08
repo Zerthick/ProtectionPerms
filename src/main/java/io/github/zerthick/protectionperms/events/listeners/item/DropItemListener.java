@@ -19,12 +19,14 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import org.spongepowered.api.entity.EntityTypes;
+import org.spongepowered.api.entity.Item;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
-import org.spongepowered.api.item.inventory.ItemStackSnapshot;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
 import java.util.List;
@@ -32,14 +34,15 @@ import java.util.List;
 public class DropItemListener {
 
     @Listener
-    public void onItemDrop(DropItemEvent.Pre event, @First Player player) {
-        List<ItemStackSnapshot> itemStackList = event.getDroppedItems();
-        for (ItemStackSnapshot snapshot : itemStackList) {
-            String itemName = snapshot.getType().getName();
-            if (!player.hasPermission("protectionPerms.item.drop." + itemName)) {
+    public void onItemDrop(DropItemEvent.Dispense event, @First Player player) {
+        List<Item> itemEntities = (List<Item>) event.filterEntities(entity -> entity.getType().equals(EntityTypes.ITEM));
+        player.sendMessage(Text.of(event.getCause()));
+
+        for (Item item : itemEntities) {
+            String itemName = item.getType().getName();
+            if (!player.hasPermission("protectionperms.item.drop." + itemName)) {
                 event.setCancelled(true);
-                player.sendMessage(Text.of(TextColors.RED, "You don't have permission to drop " + itemName + '!'));
-                break;
+                player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemName + '!'));
             }
         }
     }

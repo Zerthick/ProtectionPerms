@@ -32,7 +32,7 @@ public class RideEntityMountListener {
     @Listener
     public void onEntityMount(RideEntityEvent.Mount event, @First Player player) {
         String entityName = event.getTargetEntity().getType().getName();
-        if (!player.hasPermission("protectionPerms.entity.mount." + entityName)) {
+        if (!player.hasPermission("protectionperms.entity.mount." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to mount " + entityName + "s!"));

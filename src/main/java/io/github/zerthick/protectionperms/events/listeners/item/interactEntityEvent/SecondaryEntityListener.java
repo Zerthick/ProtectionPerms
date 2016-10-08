@@ -39,7 +39,7 @@ public class SecondaryEntityListener {
         if(itemStackOptional.isPresent()) {
             String entityName = event.getTargetEntity().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();
-            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + entityName + ".primary")) {
+            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + entityName + '!'));
@@ -53,7 +53,7 @@ public class SecondaryEntityListener {
         if(itemStackOptional.isPresent()) {
             String entityName = event.getTargetEntity().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();
-            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + entityName + ".primary")) {
+            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + entityName + '!'));

@@ -39,7 +39,7 @@ public class BreakListener {
         for (Transaction<BlockSnapshot> transaction : transactions) {
             BlockSnapshot snapshot = transaction.getOriginal();
             String blockName = snapshot.getState().getType().getName();
-            if (!player.hasPermission("protectionPerms.block.break." + blockName)) {
+            if (!player.hasPermission("protectionperms.block.break." + blockName)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to break " + blockName + '!'));

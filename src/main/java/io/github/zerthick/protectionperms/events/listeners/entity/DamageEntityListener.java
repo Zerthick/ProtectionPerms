@@ -35,7 +35,7 @@ public class DamageEntityListener {
         if(dmgSource.getSource() instanceof Player) {
             Player player = (Player)dmgSource.getSource();
             String entityName = event.getTargetEntity().getType().getName();
-            if (!player.hasPermission("protectionPerms.entity.damage." + entityName + ".deal")) {
+            if (!player.hasPermission("protectionperms.entity.damage." + entityName + ".deal")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to damage " + entityName + "s!"));

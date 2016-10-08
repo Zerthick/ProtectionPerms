@@ -32,7 +32,7 @@ public class PrimaryListener {
     @Listener
     public void onInteractEntityPrimary(InteractEntityEvent.Primary event, @First Player player) {
         String entityName = event.getTargetEntity().getType().getName();
-        if (!player.hasPermission("protectionPerms.entity.interact." + entityName + ".primary")) {
+        if (!player.hasPermission("protectionperms.entity.interact." + entityName + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to primary interact with " + entityName + "s!"));

@@ -32,7 +32,7 @@ public class TameEntityListener {
     @Listener
     public void onEntityTame(TameEntityEvent event, @First Player player) {
         String entityName = event.getTargetEntity().getType().getName();
-        if (!player.hasPermission("protectionPerms.entity.tame." + entityName)) {
+        if (!player.hasPermission("protectionperms.entity.tame." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to tame " + entityName + "s!"));

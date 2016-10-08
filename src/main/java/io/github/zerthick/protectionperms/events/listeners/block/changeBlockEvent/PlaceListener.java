@@ -39,7 +39,7 @@ public class PlaceListener {
         for (Transaction<BlockSnapshot> transaction : transactions) {
             BlockSnapshot snapshot = transaction.getFinal();
             String blockName = snapshot.getState().getType().getName();
-            if (!player.hasPermission("protectionPerms.block.place." + blockName)) {
+            if (!player.hasPermission("protectionperms.block.place." + blockName)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));

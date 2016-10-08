@@ -32,7 +32,7 @@ public class BreedEntityListener {
     @Listener
     public void onEntityBreed(BreedEntityEvent event, @First Player player){
         String entityName = event.getTargetEntity().getType().getName();
-        if (!player.hasPermission("protectionPerms.entity.breed." + entityName)) {
+        if (!player.hasPermission("protectionperms.entity.breed." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to breed " + entityName + "s!"));

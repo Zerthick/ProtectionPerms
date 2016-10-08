@@ -32,7 +32,7 @@ public class PrimaryListener {
     @Listener
     public void onInteractBlockPrimary(InteractBlockEvent.Primary event, @First Player player) {
         String blockName = event.getTargetBlock().getState().getType().getName();
-        if (!player.hasPermission("protectionPerms.block.interact." + blockName + ".primary")) {
+        if (!player.hasPermission("protectionperms.block.interact." + blockName + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockName + '!'));

@@ -39,7 +39,7 @@ public class SecondaryBlockListener {
         if(itemStackOptional.isPresent()) {
             String blockName = event.getTargetBlock().getState().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();
-            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + blockName + ".secondary")) {
+            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + blockName + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + blockName + '!'));
@@ -53,7 +53,7 @@ public class SecondaryBlockListener {
         if(itemStackOptional.isPresent()) {
             String blockName = event.getTargetBlock().getState().getType().getName();
             String itemName = itemStackOptional.get().getItem().getName();
-            if (!player.hasPermission("protectionPerms.item.use." + itemName + ".on." + blockName + ".secondary")) {
+            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + blockName + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + blockName + '!'));
