@@ -38,7 +38,6 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new SecondaryBlockListener());
         listeners.add(new PrimaryEntityListener());
         listeners.add(new SecondaryEntityListener());
-        listeners.add(new DropItemListener());
     }
 
     @Override

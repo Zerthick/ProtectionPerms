@@ -34,7 +34,7 @@ public class DamageEntityListener {
     public void onEntityDamage(DamageEntityEvent event, @First EntityDamageSource dmgSource) {
         if(dmgSource.getSource() instanceof Player) {
             Player player = (Player)dmgSource.getSource();
-            String entityName = event.getTargetEntity().getType().getName();
+            String entityName = event.getTargetEntity().getType().getId();
             if (!player.hasPermission("protectionperms.entity.damage." + entityName + ".deal")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,

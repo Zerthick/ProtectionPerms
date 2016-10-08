@@ -37,8 +37,8 @@ public class PrimaryEntityListener {
     public void onInteractEntityPrimaryMain(InteractEntityEvent.Primary.MainHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
         if(itemStackOptional.isPresent()) {
-            String entityName = event.getTargetEntity().getType().getName();
-            String itemName = itemStackOptional.get().getItem().getName();
+            String entityName = event.getTargetEntity().getType().getId();
+            String itemName = itemStackOptional.get().getItem().getId();
             if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
@@ -51,8 +51,8 @@ public class PrimaryEntityListener {
     public void onInteractEntityPrimaryOff(InteractEntityEvent.Primary.OffHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
-            String entityName = event.getTargetEntity().getType().getName();
-            String itemName = itemStackOptional.get().getItem().getName();
+            String entityName = event.getTargetEntity().getType().getId();
+            String itemName = itemStackOptional.get().getItem().getId();
             if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,

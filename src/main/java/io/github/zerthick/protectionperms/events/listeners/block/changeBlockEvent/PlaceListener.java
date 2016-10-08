@@ -38,7 +38,7 @@ public class PlaceListener {
         List<Transaction<BlockSnapshot>> transactions = event.getTransactions();
         for (Transaction<BlockSnapshot> transaction : transactions) {
             BlockSnapshot snapshot = transaction.getFinal();
-            String blockName = snapshot.getState().getType().getName();
+            String blockName = snapshot.getState().getType().getId();
             if (!player.hasPermission("protectionperms.block.place." + blockName)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,

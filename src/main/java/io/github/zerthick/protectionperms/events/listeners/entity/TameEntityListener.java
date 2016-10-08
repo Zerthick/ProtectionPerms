@@ -31,7 +31,7 @@ public class TameEntityListener {
 
     @Listener
     public void onEntityTame(TameEntityEvent event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getName();
+        String entityName = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.tame." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,

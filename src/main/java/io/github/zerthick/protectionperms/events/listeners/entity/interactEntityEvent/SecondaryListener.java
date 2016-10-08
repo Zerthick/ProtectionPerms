@@ -31,7 +31,7 @@ public class SecondaryListener {
 
     @Listener
     public void onInteractEntitySecondary(InteractEntityEvent.Secondary event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getName();
+        String entityName = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.interact." + entityName + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,

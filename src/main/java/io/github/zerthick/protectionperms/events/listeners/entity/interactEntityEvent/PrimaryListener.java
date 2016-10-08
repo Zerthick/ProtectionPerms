@@ -31,7 +31,7 @@ public class PrimaryListener {
 
     @Listener
     public void onInteractEntityPrimary(InteractEntityEvent.Primary event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getName();
+        String entityName = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.interact." + entityName + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,

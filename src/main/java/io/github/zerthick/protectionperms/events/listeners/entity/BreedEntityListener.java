@@ -31,7 +31,7 @@ public class BreedEntityListener {
 
     @Listener
     public void onEntityBreed(BreedEntityEvent event, @First Player player){
-        String entityName = event.getTargetEntity().getType().getName();
+        String entityName = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.breed." + entityName)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
