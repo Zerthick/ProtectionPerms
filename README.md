@@ -36,7 +36,7 @@ Example: `protecitonPerms.entity.tame.minecraft:wolf`
 Example: `protecitonPerms.entity.breed.minecraft:cow`
 
 * `protectionperms.entity.mount.<entityName>` - Player can mount `enityName`. 
-Example: `protecitonPerms.entity.breed.minecraft:entityhorse`
+Example: `protecitonPerms.entity.mount.minecraft:entityhorse`
 
 * `protectionperms.entity.damage.<entityName>.deal` - Player can deal damage to `enityName`. 
 Example: `protecitonPerms.entity.damage.minecraft:skeleton.deal`
