@@ -31,11 +31,11 @@ public class PrimaryListener {
 
     @Listener
     public void onInteractEntityPrimary(InteractEntityEvent.Primary event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getId();
-        if (!player.hasPermission("protectionperms.entity.interact." + entityName + ".primary")) {
+        String entityId = event.getTargetEntity().getType().getId();
+        if (!player.hasPermission("protectionperms.entity.interact." + entityId + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + entityName + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + entityId + "s!"));
         }
     }
 }

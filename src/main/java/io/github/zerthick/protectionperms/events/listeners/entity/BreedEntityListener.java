@@ -31,11 +31,11 @@ public class BreedEntityListener {
 
     @Listener
     public void onEntityBreed(BreedEntityEvent event, @First Player player){
-        String entityName = event.getTargetEntity().getType().getId();
-        if (!player.hasPermission("protectionperms.entity.breed." + entityName)) {
+        String entityId = event.getTargetEntity().getType().getId();
+        if (!player.hasPermission("protectionperms.entity.breed." + entityId)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to breed " + entityName + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to breed " + entityId + "s!"));
         }
     }
 }

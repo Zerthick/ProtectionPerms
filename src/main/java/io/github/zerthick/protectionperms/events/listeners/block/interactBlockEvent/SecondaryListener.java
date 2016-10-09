@@ -31,11 +31,11 @@ public class SecondaryListener {
 
     @Listener
     public void onInteractBlockSecondary(InteractBlockEvent.Secondary event, @First Player player) {
-        String blockName = event.getTargetBlock().getState().getType().getId();
-        if (!player.hasPermission("protectionperms.block.interact." + blockName + ".secondary")) {
+        String blockId = event.getTargetBlock().getState().getType().getId();
+        if (!player.hasPermission("protectionperms.block.interact." + blockId + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + blockName + '!'));
+                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + blockId + '!'));
         }
     }
 }

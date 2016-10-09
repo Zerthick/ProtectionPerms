@@ -38,11 +38,11 @@ public class PlaceListener {
         List<Transaction<BlockSnapshot>> transactions = event.getTransactions();
         for (Transaction<BlockSnapshot> transaction : transactions) {
             BlockSnapshot snapshot = transaction.getFinal();
-            String blockName = snapshot.getState().getType().getId();
-            if (!player.hasPermission("protectionperms.block.place." + blockName)) {
+            String blockId = snapshot.getState().getType().getId();
+            if (!player.hasPermission("protectionperms.block.place." + blockId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to place " + blockName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to place " + blockId + '!'));
                 break;
             }
         }

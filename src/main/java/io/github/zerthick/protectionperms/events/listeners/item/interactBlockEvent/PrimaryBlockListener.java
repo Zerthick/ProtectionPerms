@@ -37,12 +37,12 @@ public class PrimaryBlockListener {
     public void onInteractBlockPrimaryMain(InteractBlockEvent.Primary.MainHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
         if(itemStackOptional.isPresent()) {
-            String blockName = event.getTargetBlock().getState().getType().getId();
-            String itemName = itemStackOptional.get().getItem().getId();
-            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + blockName + ".primary")) {
+            String blockId = event.getTargetBlock().getState().getType().getId();
+            String itemId = itemStackOptional.get().getItem().getId();
+            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to primary use " + itemName + " on " + blockName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to primary use " + itemId + " on " + blockId + '!'));
             }
         }
     }
@@ -51,12 +51,12 @@ public class PrimaryBlockListener {
     public void onInteractBlockPrimaryOff(InteractBlockEvent.Primary.OffHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
-            String blockName = event.getTargetBlock().getState().getType().getId();
-            String itemName = itemStackOptional.get().getItem().getId();
-            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + blockName + ".primary")) {
+            String blockId = event.getTargetBlock().getState().getType().getId();
+            String itemId = itemStackOptional.get().getItem().getId();
+            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to primary use " + itemName + " on " + blockName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to primary use " + itemId + " on " + blockId + '!'));
             }
         }
     }

@@ -31,11 +31,11 @@ public class RideEntityMountListener {
 
     @Listener
     public void onEntityMount(RideEntityEvent.Mount event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getId();
-        if (!player.hasPermission("protectionperms.entity.mount." + entityName)) {
+        String entityId = event.getTargetEntity().getType().getId();
+        if (!player.hasPermission("protectionperms.entity.mount." + entityId)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to mount " + entityName + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to mount " + entityId + "s!"));
         }
     }
 }

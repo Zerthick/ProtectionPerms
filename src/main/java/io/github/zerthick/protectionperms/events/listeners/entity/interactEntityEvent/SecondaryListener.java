@@ -31,11 +31,11 @@ public class SecondaryListener {
 
     @Listener
     public void onInteractEntitySecondary(InteractEntityEvent.Secondary event, @First Player player) {
-        String entityName = event.getTargetEntity().getType().getId();
-        if (!player.hasPermission("protectionperms.entity.interact." + entityName + ".secondary")) {
+        String entityId = event.getTargetEntity().getType().getId();
+        if (!player.hasPermission("protectionperms.entity.interact." + entityId + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + entityName + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + entityId + "s!"));
         }
     }
 }

@@ -37,12 +37,12 @@ public class SecondaryEntityListener {
     public void onInteractEntitySecondaryMain(InteractEntityEvent.Secondary.MainHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
         if(itemStackOptional.isPresent()) {
-            String entityName = event.getTargetEntity().getType().getId();
-            String itemName = itemStackOptional.get().getItem().getId();
-            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
+            String entityId = event.getTargetEntity().getType().getId();
+            String itemId = itemStackOptional.get().getItem().getId();
+            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + entityId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + entityName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + entityId + '!'));
             }
         }
     }
@@ -51,12 +51,12 @@ public class SecondaryEntityListener {
     public void onInteractEntitySecondaryOff(InteractEntityEvent.Secondary.OffHand event, @First Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
-            String entityName = event.getTargetEntity().getType().getId();
-            String itemName = itemStackOptional.get().getItem().getId();
-            if (!player.hasPermission("protectionperms.item.use." + itemName + ".on." + entityName + ".primary")) {
+            String entityId = event.getTargetEntity().getType().getId();
+            String itemId = itemStackOptional.get().getItem().getId();
+            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + entityId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemName + " on " + entityName + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + entityId + '!'));
             }
         }
     }
