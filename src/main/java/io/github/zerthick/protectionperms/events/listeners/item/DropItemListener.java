@@ -19,28 +19,37 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item;
 
-import io.github.zerthick.protectionperms.DebugLogger;
+import org.spongepowered.api.entity.EntityTypes;
+import org.spongepowered.api.entity.Item;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
+import org.spongepowered.api.event.cause.entity.spawn.EntitySpawnCause;
+import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.chat.ChatTypes;
+import org.spongepowered.api.text.format.TextColors;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DropItemListener {
 
     @Listener
-    public void onItemDrop(DropItemEvent.Pre event) {
-        DebugLogger.getInstance().getLogger().info(event.getDroppedItems().toString());
-        /*if(spawnCause.getEntity() instanceof Player) {
+    public void onItemDrop(DropItemEvent.Dispense event, @Root EntitySpawnCause spawnCause) {
+        if (spawnCause.getEntity() instanceof Player) {
             Player player = (Player) spawnCause.getEntity();
-            List<Entity> itemEntities = event.getEntities()
+            List<Item> itemEntities = event.getEntities()
                     .stream().filter(entity -> entity.getType().equals(EntityTypes.ITEM))
+                    .map(Item.class::cast)
                     .collect(Collectors.toList());
-            for (Entity item : itemEntities) {
-                String itemId = item.get;
-                DebugLogger.getInstance().getLogger().info(itemId);
+            for (Item item : itemEntities) {
+                String itemId = item.getItemType().getId();
                 if (!player.hasPermission("protectionperms.item.drop." + itemId)) {
                     event.setCancelled(true);
                     player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemId + '!'));
                 }
             }
-        }*/
+        }
     }
 }
