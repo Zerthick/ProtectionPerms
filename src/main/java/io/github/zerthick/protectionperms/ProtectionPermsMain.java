@@ -30,7 +30,7 @@ import org.spongepowered.api.plugin.PluginContainer;
 
 @Plugin(id = "protectionperms",
         name = "ProtectionPerms",
-        version = "0.4.0",
+        version = "0.5.0",
         description = "A simple player protection and control plugin.")
 public class ProtectionPermsMain {
 
@@ -47,7 +47,9 @@ public class ProtectionPermsMain {
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
-        
+
+        DebugLogger.getInstance().setLogger(getLogger());
+
         //Register Event Listeners
         listenerRegister = new ListenerRegister(this);
         listenerRegister.registerListeners();

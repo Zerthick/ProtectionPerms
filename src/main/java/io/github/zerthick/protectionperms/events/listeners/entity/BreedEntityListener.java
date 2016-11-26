@@ -22,7 +22,7 @@ package io.github.zerthick.protectionperms.events.listeners.entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.BreedEntityEvent;
-import org.spongepowered.api.event.filter.cause.First;
+import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
@@ -30,7 +30,7 @@ import org.spongepowered.api.text.format.TextColors;
 public class BreedEntityListener {
 
     @Listener
-    public void onEntityBreed(BreedEntityEvent event, @First Player player){
+    public void onEntityBreed(BreedEntityEvent event, @Root Player player) {
         String entityId = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.breed." + entityId)) {
             event.setCancelled(true);

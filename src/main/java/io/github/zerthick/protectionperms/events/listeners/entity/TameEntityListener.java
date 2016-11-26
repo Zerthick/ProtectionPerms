@@ -22,7 +22,7 @@ package io.github.zerthick.protectionperms.events.listeners.entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.TameEntityEvent;
-import org.spongepowered.api.event.filter.cause.First;
+import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
@@ -30,7 +30,7 @@ import org.spongepowered.api.text.format.TextColors;
 public class TameEntityListener {
 
     @Listener
-    public void onEntityTame(TameEntityEvent event, @First Player player) {
+    public void onEntityTame(TameEntityEvent event, @Root Player player) {
         String entityId = event.getTargetEntity().getType().getId();
         if (!player.hasPermission("protectionperms.entity.tame." + entityId)) {
             event.setCancelled(true);

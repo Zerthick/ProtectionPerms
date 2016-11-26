@@ -17,25 +17,24 @@
  * along with ProtectionPerms.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.zerthick.protectionperms.events.listeners.block.interactBlockEvent;
+package io.github.zerthick.protectionperms.events.listeners.item;
 
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.block.InteractBlockEvent;
 import org.spongepowered.api.event.filter.cause.Root;
+import org.spongepowered.api.event.item.inventory.UseItemStackEvent;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
 
-public class PrimaryListener {
+public class UseItemListener {
 
     @Listener
-    public void onInteractBlockPrimary(InteractBlockEvent.Primary event, @Root Player player) {
-        String blockId = event.getTargetBlock().getState().getType().getId();
-        if (!player.hasPermission("protectionperms.block.interact." + blockId + ".primary")) {
+    public void onItemUse(UseItemStackEvent.Start event, @Root Player player) {
+        String itemId = event.getItemStackInUse().getType().getId();
+        if (!player.hasPermission("protectionperms.item.use." + itemId)) {
             event.setCancelled(true);
-            player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockId + '!'));
+            player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemId + '!'));
         }
     }
 }

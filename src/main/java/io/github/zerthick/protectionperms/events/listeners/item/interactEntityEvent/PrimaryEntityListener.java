@@ -23,7 +23,7 @@ import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
-import org.spongepowered.api.event.filter.cause.First;
+import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
@@ -34,7 +34,7 @@ import java.util.Optional;
 public class PrimaryEntityListener {
 
     @Listener
-    public void onInteractEntityPrimaryMain(InteractEntityEvent.Primary.MainHand event, @First Player player) {
+    public void onInteractEntityPrimaryMain(InteractEntityEvent.Primary.MainHand event, @Root Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.MAIN_HAND);
         if(itemStackOptional.isPresent()) {
             String entityId = event.getTargetEntity().getType().getId();
@@ -48,7 +48,7 @@ public class PrimaryEntityListener {
     }
 
     @Listener
-    public void onInteractEntityPrimaryOff(InteractEntityEvent.Primary.OffHand event, @First Player player) {
+    public void onInteractEntityPrimaryOff(InteractEntityEvent.Primary.OffHand event, @Root Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(HandTypes.OFF_HAND);
         if(itemStackOptional.isPresent()) {
             String entityId = event.getTargetEntity().getType().getId();

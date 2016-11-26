@@ -19,31 +19,28 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item;
 
-import org.spongepowered.api.entity.EntityTypes;
-import org.spongepowered.api.entity.Item;
-import org.spongepowered.api.entity.living.player.Player;
+import io.github.zerthick.protectionperms.DebugLogger;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.filter.cause.First;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
-import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.chat.ChatTypes;
-import org.spongepowered.api.text.format.TextColors;
-
-import java.util.List;
 
 public class DropItemListener {
 
     @Listener
-    public void onItemDrop(DropItemEvent.Dispense event, @First Player player) {
-        List<Item> itemEntities = (List<Item>) event.filterEntities(entity -> entity.getType().equals(EntityTypes.ITEM));
-        player.sendMessage(Text.of(event.getCause()));
-
-        for (Item item : itemEntities) {
-            String itemName = item.getType().getName();
-            if (!player.hasPermission("protectionperms.item.drop." + itemName)) {
-                event.setCancelled(true);
-                player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemName + '!'));
+    public void onItemDrop(DropItemEvent.Pre event) {
+        DebugLogger.getInstance().getLogger().info(event.getDroppedItems().toString());
+        /*if(spawnCause.getEntity() instanceof Player) {
+            Player player = (Player) spawnCause.getEntity();
+            List<Entity> itemEntities = event.getEntities()
+                    .stream().filter(entity -> entity.getType().equals(EntityTypes.ITEM))
+                    .collect(Collectors.toList());
+            for (Entity item : itemEntities) {
+                String itemId = item.get;
+                DebugLogger.getInstance().getLogger().info(itemId);
+                if (!player.hasPermission("protectionperms.item.drop." + itemId)) {
+                    event.setCancelled(true);
+                    player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemId + '!'));
+                }
             }
-        }
+        }*/
     }
 }

@@ -22,7 +22,7 @@ package io.github.zerthick.protectionperms.events.listeners.block.interactBlockE
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
-import org.spongepowered.api.event.filter.cause.First;
+import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
@@ -30,7 +30,7 @@ import org.spongepowered.api.text.format.TextColors;
 public class SecondaryListener {
 
     @Listener
-    public void onInteractBlockSecondary(InteractBlockEvent.Secondary event, @First Player player) {
+    public void onInteractBlockSecondary(InteractBlockEvent.Secondary event, @Root Player player) {
         String blockId = event.getTargetBlock().getState().getType().getId();
         if (!player.hasPermission("protectionperms.block.interact." + blockId + ".secondary")) {
             event.setCancelled(true);
