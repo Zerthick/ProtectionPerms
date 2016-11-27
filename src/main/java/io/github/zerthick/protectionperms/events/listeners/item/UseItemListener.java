@@ -32,7 +32,7 @@ public class UseItemListener {
     @Listener
     public void onItemUse(UseItemStackEvent.Start event, @Root Player player) {
         String itemId = event.getItemStackInUse().getType().getId();
-        if (!player.hasPermission("protectionperms.item.use." + itemId)) {
+        if (!player.hasPermission("protectionperms.item.use." + itemId + ".on.self")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemId + '!'));
         }
