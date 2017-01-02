@@ -19,7 +19,7 @@
 
 package io.github.zerthick.protectionperms.events;
 
-import io.github.zerthick.protectionperms.ProtectionPermsMain;
+import io.github.zerthick.protectionperms.ProtectionPerms;
 import io.github.zerthick.protectionperms.events.listeners.ListenerManager;
 import io.github.zerthick.protectionperms.events.listeners.block.BlockListenerManager;
 import io.github.zerthick.protectionperms.events.listeners.entity.EntityListenerManager;
@@ -32,13 +32,7 @@ import java.util.Set;
 
 public class ListenerRegister {
 
-    private ProtectionPermsMain plugin;
-
-    public ListenerRegister(ProtectionPermsMain plugin) {
-        this.plugin = plugin;
-    }
-
-    public void registerListeners() {
+    public static void registerListeners(ProtectionPerms plugin) {
 
         Set<ListenerManager> listenerManagerSet = new HashSet<>();
         listenerManagerSet.add(new BlockListenerManager());
