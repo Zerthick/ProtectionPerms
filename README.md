@@ -43,8 +43,8 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 
 ###Item Permissions:
 
-* `protectionperms.item.use.<itemID>` - Player can use (right-click) with `itemID` on themselves (Example: eating bread). 
-  * Example: `protectionperms.item.use.minecraft:bread`
+* `protectionperms.item.use.<itemID>.on.self` - Player can use (right-click) with `itemID` on themselves (Example: eating bread). 
+  * Example: `protectionperms.item.use.minecraft:bread.on.self`
 
 * `protectionperms.item.use.<itemID>.on.<ID>.primary` - Player can primary use (left-click) with `itemID` on the block or entity `ID`. 
   * Example: `protectionperms.item.use.minecraft:diamond_sword.on.minecraft:zombie`
