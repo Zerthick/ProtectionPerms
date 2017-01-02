@@ -37,7 +37,7 @@ spongestart {
     eula true
 
     //optional configs
-    spongeVanillaBuild '1.10.2-5.1.0-BETA-359'
+    spongeVanillaBuild '1.10.2-5.1.0-BETA-366'
     vanillaServerFolder 'run/vanilla'
 }
 
