@@ -24,35 +24,44 @@ import com.google.inject.Inject;
 import io.github.zerthick.protectionperms.events.ListenerRegister;
 import org.slf4j.Logger;
 import org.spongepowered.api.event.Listener;
+import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
 @Plugin(id = "protectionperms",
         name = "ProtectionPerms",
-        version = "0.5.0",
-        description = "A simple player protection and control plugin.")
-public class ProtectionPermsMain {
+        version = "0.5.1",
+        description = "A simple player protection and control plugin.",
+        authors = {
+                "Zerthick"
+        }
+)
+public class ProtectionPerms {
 
     @Inject
     private Logger logger;
     @Inject
     private PluginContainer instance;
 
-    private ListenerRegister listenerRegister;
-
     public Logger getLogger() {
         return logger;
     }
 
-    @Listener
-    public void onServerStart(GameStartedServerEvent event) {
+    public PluginContainer getInstance() {
+        return instance;
+    }
+    
 
-        DebugLogger.getInstance().setLogger(getLogger());
+    @Listener
+    public void onServerInit(GameInitializationEvent event) {
 
         //Register Event Listeners
-        listenerRegister = new ListenerRegister(this);
-        listenerRegister.registerListeners();
+        ListenerRegister.registerListeners(this);
+    }
+
+    @Listener
+    public void onServerStart(GameStartedServerEvent event) {
 
         // Log Start Up to Console
         getLogger().info(
