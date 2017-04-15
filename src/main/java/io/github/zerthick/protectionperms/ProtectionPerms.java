@@ -31,7 +31,7 @@ import org.spongepowered.api.plugin.PluginContainer;
 
 @Plugin(id = "protectionperms",
         name = "ProtectionPerms",
-        version = "0.5.1",
+        version = "0.6.0",
         description = "A simple player protection and control plugin.",
         authors = {
                 "Zerthick"
