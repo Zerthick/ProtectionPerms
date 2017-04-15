@@ -1,9 +1,6 @@
 #ProtectionPerms:
 ProtectionPerms is a simple player protection and control plugin inspired by plugins like ModifyWorld or NoItem.  It's aim is to provide an easy, permissions-based way of preventing players from performing certain actions on your server, such as breaking blocks, damaging entities, or using items.
 
-##Sponge Forum Post:
-You can view the Sponge Forum post of ProtectionPerms [here](https://forums.spongepowered.org/t/wip-protectionperms-v0-1-0-a-simple-player-protection-control-plugin/10481)!
-
 ##Permssions:
 At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies.  Currently, permissions come in three flavors:
 
