@@ -40,6 +40,7 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new SecondaryEntityListener());
         listeners.add(new UseItemListener());
         listeners.add(new DropItemListener());
+        listeners.add(new ItemCraftListener());
     }
 
     @Override
