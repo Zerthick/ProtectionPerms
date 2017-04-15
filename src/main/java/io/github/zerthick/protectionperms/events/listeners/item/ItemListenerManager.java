@@ -41,6 +41,8 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new UseItemListener());
         listeners.add(new DropItemListener());
         listeners.add(new CraftItemListener());
+        //listeners.add(new EnchantItemListener());
+        //listeners.add(new SmeltItemListener());
     }
 
     @Override
