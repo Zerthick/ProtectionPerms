@@ -49,10 +49,22 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.use.<itemID>.on.<ID>.secondary` - Player can secondary use (right-click) with `itemID` on the block or entity `ID`. 
   * Example: `protectionperms.item.use.minecraft:iron_hoe.on.minecraft:grass`
 
-* `protectionperms.item.drop.<itemID>` - Player can drop `itemID` on the ground. 
-  * Example: `protectionperms.item.drop.minecraft:diamond_sworld`
+* `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
+  * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
+
+* `protectionperms.item.drop.<itemID>.death` - Player will drop `itemID` on death. 
+  * Example: `protectionperms.item.drop.minecraft:diamond.death`
 
 * `protectionperms.item.craft.<itemID>` - Player can craft `itemID`. 
-  * Example: `protectionperms.item.craft.minecraft:minecraft:torch`
+  * Example: `protectionperms.item.craft.minecraft:torch`
+  
+* `protectionperms.item.smelt.<itemID>` - Player can smelt `itemID` in a furance. 
+  * Example: `protectionperms.item.smelt.minecraft:iron_ore`
+
+* `protectionperms.item.fuel.<itemID>` - Player can us `itemID` as fuel in a furance. 
+  * Example: `protectionperms.item.fuel.minecraft:coal`
 
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
+
+## Support Me
+I will **never** charge money for the use of my plugins, however they do require a significant amount of work to maintain and update. If you'd like to show your support and buy me a cup of tea sometime (I don't drink that horrid coffee stuff :P) you can do so [here](https://www.paypal.me/zerthick)
