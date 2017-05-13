@@ -39,10 +39,13 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new PrimaryEntityListener());
         listeners.add(new SecondaryEntityListener());
         listeners.add(new UseItemListener());
-        listeners.add(new DropItemListener());
+        listeners.add(new DropItemDispenseListener());
+        listeners.add(new DropItemDeathListener());
         listeners.add(new CraftItemListener());
         //listeners.add(new EnchantItemListener());
-        //listeners.add(new SmeltItemListener());
+        listeners.add(new SmeltItemListener());
+        //listeners.add(new ForgeItemListener());
+        //listeners.add(new BrewItemListener());
     }
 
     @Override
