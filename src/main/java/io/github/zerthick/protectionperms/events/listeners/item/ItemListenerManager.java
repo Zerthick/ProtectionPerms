@@ -46,6 +46,7 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new SmeltItemListener());
         //listeners.add(new ForgeItemListener());
         //listeners.add(new BrewItemListener());
+        listeners.add(new EquipItemListener());
     }
 
     @Override
