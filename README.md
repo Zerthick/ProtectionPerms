@@ -49,6 +49,9 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.use.<itemID>.on.<ID>.secondary` - Player can secondary use (right-click) with `itemID` on the block or entity `ID`. 
   * Example: `protectionperms.item.use.minecraft:iron_hoe.on.minecraft:grass`
 
+* `protectionperms.item.equip.<itemID>` - Player can equip `itemID` to an armor slot. 
+  * Example: `protectionperms.item.fuel.minecraft:iron_chestplate`
+
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
 
