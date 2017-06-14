@@ -31,11 +31,13 @@ public class PrimaryListener {
 
     @Listener
     public void onInteractBlockPrimary(InteractBlockEvent.Primary event, @Root Player player) {
-        String blockId = event.getTargetBlock().getState().getType().getId();
-        if (!player.hasPermission("protectionperms.block.interact." + blockId + ".primary")) {
+        String blockTypeId = event.getTargetBlock().getState().getType().getId();
+        String blockStateId = event.getTargetBlock().getState().getId();
+        if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".primary") ||
+                !player.hasPermission("protectionperms.block.interact." + blockStateId + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockId + '!'));
+                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockStateId + '!'));
         }
     }
 }

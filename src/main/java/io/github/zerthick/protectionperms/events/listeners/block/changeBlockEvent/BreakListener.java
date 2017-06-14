@@ -38,11 +38,13 @@ public class BreakListener {
         List<Transaction<BlockSnapshot>> transactions = event.getTransactions();
         for (Transaction<BlockSnapshot> transaction : transactions) {
             BlockSnapshot snapshot = transaction.getOriginal();
-            String blockId = snapshot.getState().getType().getId();
-            if (!player.hasPermission("protectionperms.block.break." + blockId)) {
+            String blockTypeId = snapshot.getState().getType().getId();
+            String blockStateId = snapshot.getState().getId();
+            if (!player.hasPermission("protectionperms.block.break." + blockTypeId) ||
+                    !player.hasPermission("protectionperms.block.break." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to break " + blockId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to break " + blockStateId + '!'));
                 break;
             }
         }

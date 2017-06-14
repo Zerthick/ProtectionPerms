@@ -36,12 +36,14 @@ public class SecondaryBlockListener {
     public void onInteractBlockSecondaryMain(InteractBlockEvent.Secondary event, @Root Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(event.getHandType());
         if(itemStackOptional.isPresent()) {
-            String blockId = event.getTargetBlock().getState().getType().getId();
+            String blockTypeId = event.getTargetBlock().getState().getType().getId();
+            String blockStateId = event.getTargetBlock().getState().getId();
             String itemId = itemStackOptional.get().getItem().getId();
-            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockId + ".secondary")) {
+            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary") ||
+                    !player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + blockId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + blockStateId + '!'));
             }
         }
     }
