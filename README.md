@@ -67,6 +67,9 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.fuel.<itemID>` - Player can us `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
 
+#### A Note on BlockStates:
+Whenever a permission requires a blockID you can optionally include `BlockState` information. For example if I wanted to give the player permission to break Andesite but not regular stone I could give them the permission `protectionperms.block.break.minecraft:stone[variant=andesite]`. Giving the player the `protectionperms.block.break.minecraft:stone` permission still allows them to break all variants of stone as normal.
+
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
 
 ## Support Me
