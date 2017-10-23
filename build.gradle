@@ -37,9 +37,7 @@ spongestart {
     eula true
 
     minecraft '1.11.2'
-    type 'bleeding'
-    spongeForgeVersion '1.11.2-2282-6.0.0-BETA-2297'
-
+    type 'stable'
 }
 
 dependencies {
