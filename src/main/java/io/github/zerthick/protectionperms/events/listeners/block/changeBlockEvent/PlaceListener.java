@@ -40,7 +40,7 @@ public class PlaceListener {
             BlockSnapshot snapshot = transaction.getFinal();
             String blockTypeId = snapshot.getState().getType().getId();
             String blockStateId = snapshot.getState().getId();
-            if (!player.hasPermission("protectionperms.block.place." + blockTypeId) ||
+            if (!player.hasPermission("protectionperms.block.place." + blockTypeId) &&
                     !player.hasPermission("protectionperms.block.place." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
