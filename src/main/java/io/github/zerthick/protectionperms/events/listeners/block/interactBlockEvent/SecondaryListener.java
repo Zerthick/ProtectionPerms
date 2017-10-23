@@ -33,7 +33,7 @@ public class SecondaryListener {
     public void onInteractBlockSecondary(InteractBlockEvent.Secondary event, @Root Player player) {
         String blockTypeId = event.getTargetBlock().getState().getType().getId();
         String blockStateId = event.getTargetBlock().getState().getId();
-        if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".secondary") ||
+        if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".secondary") &&
                 !player.hasPermission("protectionperms.block.interact." + blockStateId + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,

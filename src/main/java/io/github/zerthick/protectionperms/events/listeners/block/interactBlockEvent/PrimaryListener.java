@@ -33,7 +33,7 @@ public class PrimaryListener {
     public void onInteractBlockPrimary(InteractBlockEvent.Primary event, @Root Player player) {
         String blockTypeId = event.getTargetBlock().getState().getType().getId();
         String blockStateId = event.getTargetBlock().getState().getId();
-        if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".primary") ||
+        if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".primary") &&
                 !player.hasPermission("protectionperms.block.interact." + blockStateId + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,

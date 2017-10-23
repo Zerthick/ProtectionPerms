@@ -40,7 +40,7 @@ public class BreakListener {
             BlockSnapshot snapshot = transaction.getOriginal();
             String blockTypeId = snapshot.getState().getType().getId();
             String blockStateId = snapshot.getState().getId();
-            if (!player.hasPermission("protectionperms.block.break." + blockTypeId) ||
+            if (!player.hasPermission("protectionperms.block.break." + blockTypeId) &&
                     !player.hasPermission("protectionperms.block.break." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
