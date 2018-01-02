@@ -20,6 +20,7 @@
 package io.github.zerthick.protectionperms.events.listeners.block.changeBlockEvent;
 
 import org.spongepowered.api.block.BlockSnapshot;
+import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -37,14 +38,16 @@ public class BreakListener {
     public void onBlockBreak(ChangeBlockEvent.Break event, @Root Player player) {
         List<Transaction<BlockSnapshot>> transactions = event.getTransactions();
         for (Transaction<BlockSnapshot> transaction : transactions) {
+
             BlockSnapshot snapshot = transaction.getOriginal();
-            String blockTypeId = snapshot.getState().getType().getId();
-            String blockStateId = snapshot.getState().getId();
+            BlockState blockState = snapshot.getState();
+            String blockTypeId = blockState.getType().getId();
+            String blockStateId = blockState.getId();
             if (!player.hasPermission("protectionperms.block.break." + blockTypeId) &&
                     !player.hasPermission("protectionperms.block.break." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to break " + blockStateId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to break " + blockState.getName() + '!'));
                 break;
             }
         }

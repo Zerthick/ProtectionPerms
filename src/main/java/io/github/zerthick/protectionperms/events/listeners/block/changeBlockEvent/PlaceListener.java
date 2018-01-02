@@ -20,6 +20,7 @@
 package io.github.zerthick.protectionperms.events.listeners.block.changeBlockEvent;
 
 import org.spongepowered.api.block.BlockSnapshot;
+import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.data.Transaction;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -37,14 +38,16 @@ public class PlaceListener {
     public void onBlockPlace(ChangeBlockEvent.Place event, @Root Player player) {
         List<Transaction<BlockSnapshot>> transactions = event.getTransactions();
         for (Transaction<BlockSnapshot> transaction : transactions) {
+
             BlockSnapshot snapshot = transaction.getFinal();
-            String blockTypeId = snapshot.getState().getType().getId();
-            String blockStateId = snapshot.getState().getId();
+            BlockState blockState = snapshot.getState();
+            String blockTypeId = blockState.getType().getId();
+            String blockStateId = blockState.getId();
             if (!player.hasPermission("protectionperms.block.place." + blockTypeId) &&
                     !player.hasPermission("protectionperms.block.place." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to place " + blockStateId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to place " + blockState.getName() + '!'));
                 break;
             }
         }
