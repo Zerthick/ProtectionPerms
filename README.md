@@ -37,6 +37,9 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 
 * `protectionperms.entity.damage.<entityID>.deal` - Player can deal damage to `enityName`. 
   * Example: `protectionperms.entity.damage.minecraft:skeleton.deal`
+  
+* `protectionperms.entity.hook.<entityID>` - Player can hook `enityName` with a fishing pole. 
+  * Example: `protectionperms.entity.hook.minecraft:sheep`
 
 ### Item Permissions:
 
