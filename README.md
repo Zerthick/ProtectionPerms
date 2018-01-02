@@ -5,74 +5,77 @@ ProtectionPerms is a simple player protection and control plugin inspired by plu
 At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies.  Currently, permissions come in three flavors:
 
 ### Block Permissions:
-
+#### Primary Interaction
 * `protectionperms.block.interact.<blockID>.primary` - Player can primary interact (left-click) on `blockID`. 
   * Example: `protectionperms.block.interact.minecraft:stone.primary`
-
+#### Secondary Interaction
 * `protectionperms.block.interact.<blockID>.secondary` - Player can secondary interact (right-click) on `blockID`. 
   * Example: `protectionperms.block.interact.minecraft:dirt.secondary`
-
+#### Breaking
 * `protectionperms.block.break.<blockID>` - Player can break `blockID`. 
   * Example: `protectionperms.block.break.minecraft:stone`
-
+#### Placing
 * `protectionperms.block.place.<blockID>` - Player can place `blockID`. 
   * Example: `protectionperms.block.place.minecraft:stone`
 
 ### Entity Permissions:
-
+#### Primary Interaction
 * `protectionperms.entity.interact.<entityID>.primary` - Player can primary interact (left-click) on `enityName`.
   * Example: `protectionperms.entity.interact.minecraft:zombie.primary`
-
+#### Secondary Interaction
 * `protectionperms.entity.interact.<entityID>.secondary` - Player can secondary interact (right-click) on `enityName`. 
   * Example: `protectionperms.entity.interact.minecraft:pig.secondary`
-
+#### Taming
 * `protectionperms.entity.tame.<entityID>` - Player can tame `enityName`. 
   * Example: `protectionperms.entity.tame.minecraft:wolf`
-
+#### Breeding
 * `protectionperms.entity.breed.<entityID>` - Player can breed `enityName`. 
   * Example: `protectionperms.entity.breed.minecraft:cow`
-
+#### Mounting
 * `protectionperms.entity.mount.<entityID>` - Player can mount `enityName`. 
   * Example: `protectionperms.entity.mount.minecraft:entityhorse`
-
+#### Dealing Damage
 * `protectionperms.entity.damage.<entityID>.deal` - Player can deal damage to `enityName`. 
   * Example: `protectionperms.entity.damage.minecraft:skeleton.deal`
-  
+#### Hook (Fishing)  
 * `protectionperms.entity.hook.<entityID>` - Player can hook `enityName` with a fishing pole. 
   * Example: `protectionperms.entity.hook.minecraft:sheep`
 
 ### Item Permissions:
-
+#### Primary Usage on Self
 * `protectionperms.item.use.<itemID>.on.self` - Player can use (right-click) with `itemID` on themselves (Example: eating bread). 
   * Example: `protectionperms.item.use.minecraft:bread.on.self`
-
+#### Primary Usage on Subject
 * `protectionperms.item.use.<itemID>.on.<ID>.primary` - Player can primary use (left-click) with `itemID` on the block or entity `ID`. 
   * Example: `protectionperms.item.use.minecraft:diamond_sword.on.minecraft:zombie`
-
+#### Secondary Usage on Subject
 * `protectionperms.item.use.<itemID>.on.<ID>.secondary` - Player can secondary use (right-click) with `itemID` on the block or entity `ID`. 
   * Example: `protectionperms.item.use.minecraft:iron_hoe.on.minecraft:grass`
-
+#### Equipping
 * `protectionperms.item.equip.<itemID>` - Player can equip `itemID` to an armor slot. 
   * Example: `protectionperms.item.equip.minecraft:iron_chestplate`
-
+#### Picking Up
+* Currently preventing players from picking up items is not implmented. See issue #6 for more details.
+#### Dropping
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
-
+#### Drop on Death
 * `protectionperms.item.drop.<itemID>.death` - Player will drop `itemID` on death. 
   * Example: `protectionperms.item.drop.minecraft:diamond.death`
-
+#### Crafting
 * `protectionperms.item.craft.<itemID>` - Player can craft `itemID`. 
   * Example: `protectionperms.item.craft.minecraft:torch`
-  
+#### Smelting
 * `protectionperms.item.smelt.<itemID>` - Player can smelt `itemID` in a furance. 
   * Example: `protectionperms.item.smelt.minecraft:iron_ore`
-
+#### Use as Fuel
 * `protectionperms.item.fuel.<itemID>` - Player can us `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
 
 #### A Note on BlockStates:
 Whenever a permission requires a blockID you can optionally include `BlockState` information. For example if I wanted to give the player permission to break Andesite but not regular stone I could give them the permission `protectionperms.block.break.minecraft:stone[variant=andesite]`. Giving the player the `protectionperms.block.break.minecraft:stone` permission still allows them to break all variants of stone as normal.
 
+### Conflicts
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
 
 ## Support Me
