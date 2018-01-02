@@ -67,7 +67,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.smelt.<itemID>` - Player can smelt `itemID` in a furance. 
   * Example: `protectionperms.item.smelt.minecraft:iron_ore`
 
-* `protectionperms.item.fuel.<itemID>` - Player can us `itemID` as fuel in a furance. 
+* `protectionperms.item.fuel.<itemID>` - Player can use `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
 
 #### A Note on BlockStates:
