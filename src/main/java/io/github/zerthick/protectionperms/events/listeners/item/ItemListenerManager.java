@@ -42,11 +42,12 @@ public class ItemListenerManager implements ListenerManager{
         listeners.add(new DropItemDispenseListener());
         listeners.add(new DropItemDeathListener());
         listeners.add(new CraftItemListener());
-        //listeners.add(new EnchantItemListener());
+        //*listeners.add(new EnchantItemListener());
         listeners.add(new SmeltItemListener());
-        //listeners.add(new ForgeItemListener());
-        //listeners.add(new BrewItemListener());
+        //*listeners.add(new ForgeItemListener());
+        //*listeners.add(new BrewItemListener());
         listeners.add(new EquipItemListener());
+        //listeners.add(new PickupItemListener());
     }
 
     @Override

@@ -23,6 +23,7 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.event.item.inventory.UseItemStackEvent;
+import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
@@ -31,10 +32,12 @@ public class UseItemListener {
 
     @Listener
     public void onItemUse(UseItemStackEvent.Start event, @Root Player player) {
-        String itemId = event.getItemStackInUse().getType().getId();
+
+        ItemType itemType = event.getItemStackInUse().getType();
+        String itemId = itemType.getId();
         if (!player.hasPermission("protectionperms.item.use." + itemId + ".on.self")) {
             event.setCancelled(true);
-            player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemId + '!'));
+            player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemType.getName() + '!'));
         }
     }
 }

@@ -1,24 +1,18 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
-import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.event.item.inventory.ClickInventoryEvent;
 import org.spongepowered.api.item.inventory.Inventory;
-import org.spongepowered.api.item.inventory.InventoryArchetypes;
-import org.spongepowered.api.item.inventory.slot.InputSlot;
-import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.chat.ChatTypes;
-import org.spongepowered.api.text.format.TextColors;
 
 public class EnchantItemListener {
 
     @Listener
     public void onItemEnchant(ClickInventoryEvent event, @Root Player player, @Getter("getTargetInventory") Inventory inventory) {
 
-        if (inventory.getArchetype() == InventoryArchetypes.ENCHANTING_TABLE) {
+        /*if (inventory.getArchetype() == InventoryArchetypes.ENCHANTING_TABLE) {
 
             Inventory enchantingInputs = inventory.query(InputSlot.class);
 
@@ -33,7 +27,7 @@ public class EnchantItemListener {
                     }
                 }));
             }));
-        }
+        }*/
     }
 
 }

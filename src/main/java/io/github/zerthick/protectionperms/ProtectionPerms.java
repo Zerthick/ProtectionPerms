@@ -56,6 +56,8 @@ public class ProtectionPerms {
     @Listener
     public void onServerInit(GameInitializationEvent event) {
 
+        DebugLogger.getInstance().setLogger(logger);
+
         //Register Event Listeners
         ListenerRegister.registerListeners(this);
     }

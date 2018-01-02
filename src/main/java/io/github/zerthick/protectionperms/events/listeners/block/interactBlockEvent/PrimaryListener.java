@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.block.interactBlockEvent;
 
+import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
@@ -31,13 +32,15 @@ public class PrimaryListener {
 
     @Listener
     public void onInteractBlockPrimary(InteractBlockEvent.Primary event, @Root Player player) {
-        String blockTypeId = event.getTargetBlock().getState().getType().getId();
-        String blockStateId = event.getTargetBlock().getState().getId();
+
+        BlockState blockState = event.getTargetBlock().getState();
+        String blockTypeId = blockState.getType().getId();
+        String blockStateId = blockState.getId();
         if (!player.hasPermission("protectionperms.block.interact." + blockTypeId + ".primary") &&
                 !player.hasPermission("protectionperms.block.interact." + blockStateId + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockStateId + '!'));
+                    Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockState.getName() + '!'));
         }
     }
 }

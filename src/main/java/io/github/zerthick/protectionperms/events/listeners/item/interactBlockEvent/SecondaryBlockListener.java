@@ -19,10 +19,12 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent;
 
+import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.InteractBlockEvent;
 import org.spongepowered.api.event.filter.cause.Root;
+import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
@@ -36,14 +38,19 @@ public class SecondaryBlockListener {
     public void onInteractBlockSecondaryMain(InteractBlockEvent.Secondary event, @Root Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(event.getHandType());
         if(itemStackOptional.isPresent()) {
-            String blockTypeId = event.getTargetBlock().getState().getType().getId();
-            String blockStateId = event.getTargetBlock().getState().getId();
-            String itemId = itemStackOptional.get().getItem().getId();
+
+            BlockState blockState = event.getTargetBlock().getState();
+            String blockTypeId = blockState.getType().getId();
+            String blockStateId = blockState.getId();
+
+            ItemType itemType = itemStackOptional.get().getType();
+            String itemId = itemType.getId();
+
             if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary") &&
                     !player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + blockStateId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemType.getName() + " on " + blockState.getName() + '!'));
             }
         }
     }

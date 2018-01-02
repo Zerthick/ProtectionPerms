@@ -38,7 +38,7 @@ public class EntityListenerManager implements ListenerManager{
         listeners.add(new DamageEntityListener());
         listeners.add(new RideEntityMountListener());
         listeners.add(new TameEntityListener());
-        //listeners.add(new HookEntityListener());
+        listeners.add(new HookEntityListener());
     }
 
     @Override

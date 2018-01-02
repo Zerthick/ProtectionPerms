@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.entity;
 
+import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.RideEntityEvent;
@@ -31,11 +32,13 @@ public class RideEntityMountListener {
 
     @Listener
     public void onEntityMount(RideEntityEvent.Mount event, @Root Player player) {
-        String entityId = event.getTargetEntity().getType().getId();
+
+        EntityType entityType = event.getTargetEntity().getType();
+        String entityId = entityType.getId();
         if (!player.hasPermission("protectionperms.entity.mount." + entityId)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to mount " + entityId + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to mount " + entityType.getName() + "s!"));
         }
     }
 }

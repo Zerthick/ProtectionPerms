@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.entity.interactEntityEvent;
 
+import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
@@ -31,11 +32,13 @@ public class SecondaryListener {
 
     @Listener
     public void onInteractEntitySecondary(InteractEntityEvent.Secondary event, @Root Player player) {
-        String entityId = event.getTargetEntity().getType().getId();
+
+        EntityType entityType = event.getTargetEntity().getType();
+        String entityId = entityType.getId();
         if (!player.hasPermission("protectionperms.entity.interact." + entityId + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
-                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + entityId + "s!"));
+                    Text.of(TextColors.RED, "You don't have permission to secondary interact with " + entityType.getName() + "s!"));
         }
     }
 }
