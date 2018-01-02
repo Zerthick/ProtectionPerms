@@ -20,10 +20,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
 import io.github.zerthick.protectionperms.events.listeners.ListenerManager;
-import io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent.PrimaryBlockListener;
-import io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent.SecondaryBlockListener;
-import io.github.zerthick.protectionperms.events.listeners.item.interactEntityEvent.PrimaryEntityListener;
-import io.github.zerthick.protectionperms.events.listeners.item.interactEntityEvent.SecondaryEntityListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,18 +30,18 @@ public class ItemListenerManager implements ListenerManager{
 
     public ItemListenerManager() {
         listeners = new LinkedList<>();
-        listeners.add(new PrimaryBlockListener());
-        listeners.add(new SecondaryBlockListener());
-        listeners.add(new PrimaryEntityListener());
-        listeners.add(new SecondaryEntityListener());
-        listeners.add(new UseItemListener());
-        listeners.add(new DropItemDispenseListener());
-        listeners.add(new DropItemDeathListener());
-        listeners.add(new CraftItemListener());
-        //listeners.add(new EnchantItemListener());
-        listeners.add(new SmeltItemListener());
-        //listeners.add(new ForgeItemListener());
-        //listeners.add(new BrewItemListener());
+        //listeners.add(new PrimaryBlockListener());
+        //listeners.add(new SecondaryBlockListener());
+        //listeners.add(new PrimaryEntityListener());
+        //listeners.add(new SecondaryEntityListener());
+        //listeners.add(new UseItemListener());
+        //listeners.add(new DropItemDispenseListener());
+        //listeners.add(new DropItemDeathListener());
+        //listeners.add(new CraftItemListener());
+        //*listeners.add(new EnchantItemListener());
+        //listeners.add(new SmeltItemListener());
+        //*listeners.add(new ForgeItemListener());
+        //*listeners.add(new BrewItemListener());
         listeners.add(new EquipItemListener());
     }
 

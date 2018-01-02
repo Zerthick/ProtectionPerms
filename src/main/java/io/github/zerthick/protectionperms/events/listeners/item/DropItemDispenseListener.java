@@ -23,9 +23,9 @@ import org.spongepowered.api.entity.EntityTypes;
 import org.spongepowered.api.entity.Item;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.cause.entity.spawn.EntitySpawnCause;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
+import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
 import org.spongepowered.api.text.format.TextColors;
@@ -33,21 +33,19 @@ import org.spongepowered.api.text.format.TextColors;
 public class DropItemDispenseListener {
 
     @Listener
-    public void onItemDrop(DropItemEvent.Dispense event, @Root EntitySpawnCause spawnCause) {
+    public void onItemDrop(DropItemEvent.Dispense event, @Root Player player) {
 
-        if (spawnCause.getEntity() instanceof Player) {
-            Player player = (Player) spawnCause.getEntity();
-            event.filterEntities(entity -> {
-                if (entity.getType().equals(EntityTypes.ITEM)) {
-                    Item item = (Item) entity;
-                    String itemId = item.getItemType().getId();
-                    if (!player.hasPermission("protectionperms.item.drop." + itemId + ".dispense")) {
-                        player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemId + '!'));
-                        return false;
-                    }
+        event.filterEntities(entity -> {
+            if (entity.getType().equals(EntityTypes.ITEM)) {
+                Item item = (Item) entity;
+                ItemType itemType = item.getItemType();
+                String itemId = itemType.getId();
+                if (!player.hasPermission("protectionperms.item.drop." + itemId + ".dispense")) {
+                    player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemType.getName() + '!'));
+                    return false;
                 }
-                return true;
-            });
-        }
+            }
+            return true;
+        });
     }
 }

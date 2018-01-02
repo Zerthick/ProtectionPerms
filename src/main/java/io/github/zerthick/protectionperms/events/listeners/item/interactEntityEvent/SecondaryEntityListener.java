@@ -19,10 +19,12 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactEntityEvent;
 
+import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
 import org.spongepowered.api.event.filter.cause.Root;
+import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.chat.ChatTypes;
@@ -36,12 +38,17 @@ public class SecondaryEntityListener {
     public void onInteractEntitySecondaryMain(InteractEntityEvent.Secondary event, @Root Player player) {
         Optional<ItemStack> itemStackOptional = player.getItemInHand(event.getHandType());
         if(itemStackOptional.isPresent()) {
-            String entityId = event.getTargetEntity().getType().getId();
-            String itemId = itemStackOptional.get().getItem().getId();
+
+            EntityType entityType = event.getTargetEntity().getType();
+            String entityId = entityType.getId();
+
+            ItemType itemType = itemStackOptional.get().getType();
+            String itemId = itemType.getId();
+
             if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + entityId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemId + " on " + entityId + '!'));
+                        Text.of(TextColors.RED, "You don't have permission to secondary use " + itemType.getName() + " on " + entityType.getName() + "s!"));
             }
         }
     }
