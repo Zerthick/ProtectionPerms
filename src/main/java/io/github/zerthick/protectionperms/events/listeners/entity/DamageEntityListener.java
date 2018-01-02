@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.entity;
 
+import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.cause.entity.damage.source.EntityDamageSource;
@@ -34,11 +35,12 @@ public class DamageEntityListener {
     public void onEntityDamage(DamageEntityEvent event, @Root EntityDamageSource dmgSource) {
         if(dmgSource.getSource() instanceof Player) {
             Player player = (Player)dmgSource.getSource();
-            String entityId = event.getTargetEntity().getType().getId();
+            EntityType entityType = event.getTargetEntity().getType();
+            String entityId = entityType.getId();
             if (!player.hasPermission("protectionperms.entity.damage." + entityId + ".deal")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
-                        Text.of(TextColors.RED, "You don't have permission to damage " + entityId + "s!"));
+                        Text.of(TextColors.RED, "You don't have permission to damage " + entityType.getName() + "s!"));
             }
         }
     }
