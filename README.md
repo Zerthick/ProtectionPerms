@@ -1,10 +1,10 @@
-# ProtectionPerms:
+# ProtectionPerms
 ProtectionPerms is a simple player protection and control plugin inspired by plugins like ModifyWorld or NoItem.  It's aim is to provide an easy, permissions-based way of preventing players from performing certain actions on your server, such as breaking blocks, damaging entities, or using items.
 
-## Permssions:
+## Permssions
 At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies.  Currently, permissions come in three flavors:
 
-### Block Permissions:
+### Block Permissions
 #### Primary Interaction
 * `protectionperms.block.interact.<blockID>.primary` - Player can primary interact (left-click) on `blockID`. 
   * Example: `protectionperms.block.interact.minecraft:stone.primary`
@@ -18,7 +18,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.block.place.<blockID>` - Player can place `blockID`. 
   * Example: `protectionperms.block.place.minecraft:stone`
 
-### Entity Permissions:
+### Entity Permissions
 #### Primary Interaction
 * `protectionperms.entity.interact.<entityID>.primary` - Player can primary interact (left-click) on `enityName`.
   * Example: `protectionperms.entity.interact.minecraft:zombie.primary`
@@ -41,7 +41,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.entity.hook.<entityID>` - Player can hook `enityName` with a fishing pole. 
   * Example: `protectionperms.entity.hook.minecraft:sheep`
 
-### Item Permissions:
+### Item Permissions
 #### Primary Usage on Self
 * `protectionperms.item.use.<itemID>.on.self` - Player can use (right-click) with `itemID` on themselves (Example: eating bread). 
   * Example: `protectionperms.item.use.minecraft:bread.on.self`
@@ -68,11 +68,12 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 #### Smelting
 * `protectionperms.item.smelt.<itemID>` - Player can smelt `itemID` in a furance. 
   * Example: `protectionperms.item.smelt.minecraft:iron_ore`
+
 #### Use as Fuel
-* `protectionperms.item.fuel.<itemID>` - Player can us `itemID` as fuel in a furance. 
+* `protectionperms.item.fuel.<itemID>` - Player can use `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
 
-#### A Note on BlockStates:
+#### A Note on BlockStates
 Whenever a permission requires a blockID you can optionally include `BlockState` information. For example if I wanted to give the player permission to break Andesite but not regular stone I could give them the permission `protectionperms.block.break.minecraft:stone[variant=andesite]`. Giving the player the `protectionperms.block.break.minecraft:stone` permission still allows them to break all variants of stone as normal.
 
 ### Conflicts
