@@ -55,7 +55,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.equip.<itemID>` - Player can equip `itemID` to an armor slot. 
   * Example: `protectionperms.item.equip.minecraft:iron_chestplate`
 #### Picking Up
-* Currently preventing players from picking up items is not implmented. See issue #6 for more details.
+* Currently preventing players from picking up items is not implmented. See issue [#6](https://github.com/Zerthick/ProtectionPerms/issues/6) for more details.
 #### Dropping
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
