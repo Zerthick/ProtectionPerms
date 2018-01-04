@@ -22,12 +22,20 @@ package io.github.zerthick.protectionperms;
 
 import com.google.inject.Inject;
 import io.github.zerthick.protectionperms.events.ListenerRegister;
+import ninja.leaping.configurate.commented.CommentedConfigurationNode;
+import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
+import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.slf4j.Logger;
+import org.spongepowered.api.asset.Asset;
+import org.spongepowered.api.config.DefaultConfig;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
+
+import java.io.IOException;
+import java.nio.file.Path;
 
 @Plugin(id = "protectionperms",
         name = "ProtectionPerms",
@@ -42,6 +50,9 @@ public class ProtectionPerms {
     private Logger logger;
     @Inject
     private PluginContainer instance;
+    @Inject
+    @DefaultConfig(sharedRoot = true)
+    private Path defaultConfig;
 
     public Logger getLogger() {
         return logger;
@@ -55,9 +66,30 @@ public class ProtectionPerms {
     @Listener
     public void onServerInit(GameInitializationEvent event) {
 
-        DebugLogger.getInstance().setLogger(logger);
+        ConfigurationLoader<CommentedConfigurationNode> configLoader = HoconConfigurationLoader.builder().setPath(defaultConfig).build();
 
-        PermHandler.getInstance().init(false);
+        //Generate default config if it doesn't exist
+        if (!defaultConfig.toFile().exists()) {
+            Asset defaultConfigAsset = getInstance().getAsset("DefaultConfig.conf").get();
+            try {
+                defaultConfigAsset.copyToFile(defaultConfig);
+                configLoader.save(configLoader.load());
+            } catch (IOException e) {
+                logger.warn("Error loading default config! Error: " + e.getMessage());
+            }
+        }
+
+        //Load invert
+        try {
+            CommentedConfigurationNode linksNode = configLoader.load().getNode("invert");
+            boolean invert = linksNode.getBoolean(false);
+            PermHandler.getInstance().init(invert);
+
+        } catch (IOException e) {
+            logger.warn("Error loading config! Error: " + e.getMessage());
+        }
+
+        DebugLogger.getInstance().setLogger(logger);
 
         //Register Event Listeners
         ListenerRegister.registerListeners(this);
