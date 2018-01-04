@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -46,8 +47,10 @@ public class SecondaryBlockListener {
             ItemType itemType = itemStackOptional.get().getType();
             String itemId = itemType.getId();
 
-            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary") &&
-                    !player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
+            PermHandler ph = PermHandler.getInstance();
+
+            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary") &&
+                    !ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemType.getName() + " on " + blockState.getName() + '!'));

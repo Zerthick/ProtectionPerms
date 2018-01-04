@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.EntityTypes;
 import org.spongepowered.api.entity.Item;
 import org.spongepowered.api.entity.living.player.Player;
@@ -35,12 +36,14 @@ public class DropItemDispenseListener {
     @Listener
     public void onItemDrop(DropItemEvent.Dispense event, @Root Player player) {
 
+        PermHandler ph = PermHandler.getInstance();
+        
         event.filterEntities(entity -> {
             if (entity.getType().equals(EntityTypes.ITEM)) {
                 Item item = (Item) entity;
                 ItemType itemType = item.getItemType();
                 String itemId = itemType.getId();
-                if (!player.hasPermission("protectionperms.item.drop." + itemId + ".dispense")) {
+                if (!ph.checkPerm(player, "protectionperms.item.drop." + itemId + ".dispense")) {
                     player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to drop " + itemType.getName() + '!'));
                     return false;
                 }

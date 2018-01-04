@@ -1,5 +1,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
@@ -24,18 +25,20 @@ public class SmeltItemListener {
 
             Inventory smeltingInputs = inventory.query(QueryOperationTypes.INVENTORY_TYPE.of(InputSlot.class));
 
+            PermHandler ph = PermHandler.getInstance();
+            
             smeltingInputs.slots().forEach(slot -> slot.peek().ifPresent(itemStack -> {
 
                 ItemType itemType = itemStack.getType();
                 String itemId = itemType.getId();
 
                 if (slot instanceof FuelSlot) {
-                    if (!player.hasPermission("protectionperms.item.fuel." + itemId)) {
+                    if (!ph.checkPerm(player, "protectionperms.item.fuel." + itemId)) {
                         event.setCancelled(true);
                         player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemType.getName() + " as fuel!"));
                     }
                 } else {
-                    if (!player.hasPermission("protectionperms.item.smelt." + itemId)) {
+                    if (!ph.checkPerm(player, "protectionperms.item.smelt." + itemId)) {
                         event.setCancelled(true);
                         player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to smelt " + itemType.getName() + '!'));
                     }

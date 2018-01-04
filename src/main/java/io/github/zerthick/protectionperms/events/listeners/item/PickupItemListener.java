@@ -1,5 +1,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.Root;
@@ -21,7 +22,9 @@ public class PickupItemListener {
             ItemType itemType = stackSnapshot.getType();
             String itemId = itemType.getId();
 
-            if (!player.hasPermission("protectionperms.item.pickup." + itemId)) {
+            PermHandler ph = PermHandler.getInstance();
+
+            if (!ph.checkPerm(player, "protectionperms.item.pickup." + itemId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to pick up " + itemType.getName() + '!'));
             }

@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.block.changeBlockEvent;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.data.Transaction;
@@ -43,8 +44,11 @@ public class PlaceListener {
             BlockState blockState = snapshot.getState();
             String blockTypeId = blockState.getType().getId();
             String blockStateId = blockState.getId();
-            if (!player.hasPermission("protectionperms.block.place." + blockTypeId) &&
-                    !player.hasPermission("protectionperms.block.place." + blockStateId)) {
+
+            PermHandler ph = PermHandler.getInstance();
+
+            if (!ph.checkPerm(player, "protectionperms.block.place." + blockTypeId) &&
+                    !ph.checkPerm(player, "protectionperms.block.place." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to place " + blockState.getName() + '!'));

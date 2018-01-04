@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactEntityEvent;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -45,7 +46,9 @@ public class SecondaryEntityListener {
             ItemType itemType = itemStackOptional.get().getType();
             String itemId = itemType.getId();
 
-            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + entityId + ".primary")) {
+            PermHandler ph = PermHandler.getInstance();
+
+            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + entityId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemType.getName() + " on " + entityType.getName() + "s!"));

@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.entity;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -35,7 +36,10 @@ public class TameEntityListener {
 
         EntityType entityType = event.getTargetEntity().getType();
         String entityId = entityType.getId();
-        if (!player.hasPermission("protectionperms.entity.tame." + entityId)) {
+
+        PermHandler ph = PermHandler.getInstance();
+
+        if (!ph.checkPerm(player, "protectionperms.entity.tame." + entityId)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to tame " + entityType.getName() + "s!"));

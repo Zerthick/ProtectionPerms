@@ -1,5 +1,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
@@ -21,9 +22,11 @@ public class ForgeItemListener {
 
             Inventory forgingInputs = inventory.query(InputSlot.class);
 
+            PermHandler ph = PermHandler.getInstance();
+            
             forgingInputs.slots().forEach(slot -> slot.peek().ifPresent(itemStack -> {
                 String itemId = itemStack.getItem().getType().getId();
-                if (!player.hasPermission("protectionperms.item.forge." + itemId)) {
+                if (!ph.checkPerm(player, "protectionperms.item.forge." + itemId)) {
                     event.setCancelled(true);
                     player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to forge " + itemId + '!'));
                 }

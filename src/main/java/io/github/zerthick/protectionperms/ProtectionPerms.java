@@ -57,6 +57,8 @@ public class ProtectionPerms {
 
         DebugLogger.getInstance().setLogger(logger);
 
+        PermHandler.getInstance().init(false);
+
         //Register Event Listeners
         ListenerRegister.registerListeners(this);
     }

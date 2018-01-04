@@ -1,5 +1,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
@@ -25,13 +26,15 @@ public class BrewItemListener {
             brewingInputs.slots().forEach(slot -> slot.peek().ifPresent(itemStack -> {
                 String itemId = itemStack.getItem().getType().getId();
 
+                PermHandler ph = PermHandler.getInstance();
+                
                 if (slot instanceof FuelSlot) {
-                    if (!player.hasPermission("protectionperms.item.fuel." + itemId)) {
+                    if (!ph.checkPerm(player, "protectionperms.item.fuel." + itemId)) {
                         event.setCancelled(true);
                         player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemId + " as fuel!"));
                     }
                 } else {
-                    if (!player.hasPermission("protectionperms.item.brew." + itemId)) {
+                    if (!ph.checkPerm(player, "protectionperms.item.brew." + itemId)) {
                         event.setCancelled(true);
                         player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to brew " + itemId + '!'));
                     }

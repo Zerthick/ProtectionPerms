@@ -19,6 +19,7 @@
 
 package io.github.zerthick.protectionperms.events.listeners.item.interactBlockEvent;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -46,8 +47,10 @@ public class PrimaryBlockListener {
             ItemType itemType = itemStackOptional.get().getType();
             String itemId = itemType.getId();
 
-            if (!player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockTypeId + ".primary") &&
-                    !player.hasPermission("protectionperms.item.use." + itemId + ".on." + blockStateId + ".primary")) {
+            PermHandler ph = PermHandler.getInstance();
+
+            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".primary") &&
+                    !ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockStateId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to primary use " + itemType.getName() + " on " + blockState.getName() + '!'));

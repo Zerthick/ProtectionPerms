@@ -1,5 +1,6 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
+import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
@@ -28,7 +29,10 @@ public class CraftItemListener {
 
                 ItemType itemType = itemStack.getType();
                 String itemId = itemType.getId();
-                if (!player.hasPermission("protectionperms.item.craft." + itemId)) {
+
+                PermHandler ph = PermHandler.getInstance();
+
+                if (!ph.checkPerm(player, "protectionperms.item.craft." + itemId)) {
                     event.setCancelled(true);
                     player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to craft " + itemType.getName() + '!'));
                 }
