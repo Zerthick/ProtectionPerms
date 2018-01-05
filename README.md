@@ -1,7 +1,7 @@
 # ProtectionPerms
 ProtectionPerms is a simple player protection and control plugin inspired by plugins like ModifyWorld or NoItem.  It's aim is to provide an easy, permissions-based way of preventing players from performing certain actions on your server, such as breaking blocks, damaging entities, or using items.
 
-## Permssions
+## Permissions
 At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies (unless the inversion flag is set as described below).  Currently, permissions come in three flavors:
 
 ### Block Permissions
