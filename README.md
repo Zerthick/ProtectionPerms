@@ -1,8 +1,8 @@
 # ProtectionPerms
 ProtectionPerms is a simple player protection and control plugin inspired by plugins like ModifyWorld or NoItem.  It's aim is to provide an easy, permissions-based way of preventing players from performing certain actions on your server, such as breaking blocks, damaging entities, or using items.
 
-## Permssions
-At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies.  Currently, permissions come in three flavors:
+## Permissions
+At this time, ProtectionPerms is completely based off permissions.  Without a given permission, players will **not** be able to perform the action the permission specifies (unless the inversion flag is set as described below).  Currently, permissions come in three flavors:
 
 ### Block Permissions
 #### Primary Interaction
@@ -73,11 +73,21 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.fuel.<itemID>` - Player can use `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
 
-#### A Note on BlockStates
+### A Note on BlockStates
 Whenever a permission requires a blockID you can optionally include `BlockState` information. For example if I wanted to give the player permission to break Andesite but not regular stone I could give them the permission `protectionperms.block.break.minecraft:stone[variant=andesite]`. Giving the player the `protectionperms.block.break.minecraft:stone` permission still allows them to break all variants of stone as normal.
 
 ### Conflicts
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
+
+### Inverting Permissions
+As of ProtectionPerms v1.2.0 a config file will be generated at `~/config/ProtectionPerms.conf`, the default configuration is shown below:
+```
+# Whether permissions nodes should be inverted 
+# If inverted granting a permission will DENY an action
+invert=false
+```
+
+If `invert` is set to `true`, the functionality of the permisison nodes will be reversed such that granting a permission node will **deny** the player from completing the action it describes.
 
 ## Support Me
 I will **never** charge money for the use of my plugins, however they do require a significant amount of work to maintain and update. If you'd like to show your support and buy me a cup of tea sometime (I don't drink that horrid coffee stuff :P) you can do so [here](https://www.paypal.me/zerthick)
