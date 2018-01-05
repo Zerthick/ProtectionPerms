@@ -83,7 +83,7 @@ When creating your permission nodes you may run into situations where you have c
 As of ProtectionPerms v1.2.0 a config file will be generated at `~/config/ProtectionPerms.conf`, the default configuration is shown below:
 ```
 # Whether permissions nodes should be inverted 
-# If inverted granting a permssion will DENY an action
+# If inverted granting a permission will DENY an action
 invert=false
 ```
 
