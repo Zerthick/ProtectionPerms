@@ -40,8 +40,8 @@ public class SecondaryListener {
 
         PermHandler ph = PermHandler.getInstance();
 
-        if (!ph.checkPerm(player, "protectionperms.block.interact." + blockTypeId + ".secondary") &&
-                !ph.checkPerm(player, "protectionperms.block.interact." + blockStateId + ".secondary")) {
+        if (!ph.checkPerm(player, "protectionperms.block.interact." + blockTypeId + ".secondary",
+                "protectionperms.block.interact." + blockStateId + ".secondary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to secondary interact with " + blockState.getName() + '!'));

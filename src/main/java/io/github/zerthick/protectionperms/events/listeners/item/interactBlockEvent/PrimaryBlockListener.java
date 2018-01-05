@@ -49,8 +49,8 @@ public class PrimaryBlockListener {
 
             PermHandler ph = PermHandler.getInstance();
 
-            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".primary") &&
-                    !ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockStateId + ".primary")) {
+            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".primary",
+                    "protectionperms.item.use." + itemId + ".on." + blockStateId + ".primary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to primary use " + itemType.getName() + " on " + blockState.getName() + '!'));

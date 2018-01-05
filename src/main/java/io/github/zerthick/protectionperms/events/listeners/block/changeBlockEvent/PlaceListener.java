@@ -47,8 +47,8 @@ public class PlaceListener {
 
             PermHandler ph = PermHandler.getInstance();
 
-            if (!ph.checkPerm(player, "protectionperms.block.place." + blockTypeId) &&
-                    !ph.checkPerm(player, "protectionperms.block.place." + blockStateId)) {
+            if (!ph.checkPerm(player, "protectionperms.block.place." + blockTypeId,
+                    "protectionperms.block.place." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to place " + blockState.getName() + '!'));

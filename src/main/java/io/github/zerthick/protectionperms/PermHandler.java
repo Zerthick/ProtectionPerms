@@ -20,9 +20,13 @@ public class PermHandler {
         this.invert = invert;
     }
 
-    public boolean checkPerm(Subject subject, String perm) {
+    public boolean checkPerm(Subject subject, String... perms) {
 
-        boolean result = subject.hasPermission(perm);
+        boolean result = false;
+
+        for (String perm : perms) {
+            result = result || subject.hasPermission(perm);
+        }
 
         if (invert) {
             return !result;

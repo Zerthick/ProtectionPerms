@@ -49,8 +49,8 @@ public class SecondaryBlockListener {
 
             PermHandler ph = PermHandler.getInstance();
 
-            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary") &&
-                    !ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
+            if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on." + blockTypeId + ".secondary",
+                    "protectionperms.item.use." + itemId + ".on." + blockStateId + ".secondary")) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to secondary use " + itemType.getName() + " on " + blockState.getName() + '!'));

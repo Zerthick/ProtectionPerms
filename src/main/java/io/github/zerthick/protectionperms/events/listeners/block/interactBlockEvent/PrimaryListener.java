@@ -40,8 +40,8 @@ public class PrimaryListener {
 
         PermHandler ph = PermHandler.getInstance();
 
-        if (!ph.checkPerm(player, "protectionperms.block.interact." + blockTypeId + ".primary") &&
-                !ph.checkPerm(player, "protectionperms.block.interact." + blockStateId + ".primary")) {
+        if (!ph.checkPerm(player, "protectionperms.block.interact." + blockTypeId + ".primary",
+                "protectionperms.block.interact." + blockStateId + ".primary")) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR,
                     Text.of(TextColors.RED, "You don't have permission to primary interact with " + blockState.getName() + '!'));

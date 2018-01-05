@@ -47,8 +47,8 @@ public class BreakListener {
 
             PermHandler ph = PermHandler.getInstance();
 
-            if (!ph.checkPerm(player, "protectionperms.block.break." + blockTypeId) &&
-                    !ph.checkPerm(player, "protectionperms.block.break." + blockStateId)) {
+            if (!ph.checkPerm(player, "protectionperms.block.break." + blockTypeId,
+                    "protectionperms.block.break." + blockStateId)) {
                 event.setCancelled(true);
                 player.sendMessage(ChatTypes.ACTION_BAR,
                         Text.of(TextColors.RED, "You don't have permission to break " + blockState.getName() + '!'));
