@@ -29,8 +29,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.entity.tame.<entityID>` - Player can tame `enityName`. 
   * Example: `protectionperms.entity.tame.minecraft:wolf`
 #### Breeding
-* `protectionperms.entity.breed.<entityID>` - Player can breed `enityName`. 
-  * Example: `protectionperms.entity.breed.minecraft:cow`
+* Currently preventing entities from breeding is not functioning, in the meantime you can use the item interact event permissions to prevent players from right-clicking on entites with the item that makes them breed
 #### Mounting
 * `protectionperms.entity.mount.<entityID>` - Player can mount `enityName`. 
   * Example: `protectionperms.entity.mount.minecraft:entityhorse`
