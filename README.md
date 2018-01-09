@@ -56,6 +56,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 #### Picking Up
 * Currently preventing players from picking up items is not implmented. See issue [#6](https://github.com/Zerthick/ProtectionPerms/issues/6) for more details.
 #### Dropping
+* Not Recommended. See issue [#13](https://github.com/Zerthick/ProtectionPerms/issues/13)
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
 #### Drop on Death
