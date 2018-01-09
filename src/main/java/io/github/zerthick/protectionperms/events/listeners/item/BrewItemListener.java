@@ -1,25 +1,18 @@
 package io.github.zerthick.protectionperms.events.listeners.item;
 
-import io.github.zerthick.protectionperms.PermHandler;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.Getter;
 import org.spongepowered.api.event.filter.cause.Root;
 import org.spongepowered.api.event.item.inventory.ClickInventoryEvent;
 import org.spongepowered.api.item.inventory.Inventory;
-import org.spongepowered.api.item.inventory.InventoryArchetypes;
-import org.spongepowered.api.item.inventory.slot.FuelSlot;
-import org.spongepowered.api.item.inventory.slot.InputSlot;
-import org.spongepowered.api.text.Text;
-import org.spongepowered.api.text.chat.ChatTypes;
-import org.spongepowered.api.text.format.TextColors;
 
 public class BrewItemListener {
 
     @Listener
     public void onItemSmelt(ClickInventoryEvent event, @Root Player player, @Getter("getTargetInventory") Inventory inventory) {
 
-        if (inventory.getArchetype() == InventoryArchetypes.BREWING_STAND) {
+        /*if (inventory.getArchetype() == InventoryArchetypes.BREWING_STAND) {
 
             Inventory brewingInputs = inventory.query(InputSlot.class);
 
@@ -40,6 +33,6 @@ public class BrewItemListener {
                     }
                 }
             }));
-        }
+        }*/
     }
 }
