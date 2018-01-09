@@ -29,8 +29,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.entity.tame.<entityID>` - Player can tame `enityName`. 
   * Example: `protectionperms.entity.tame.minecraft:wolf`
 #### Breeding
-* `protectionperms.entity.breed.<entityID>` - Player can breed `enityName`. 
-  * Example: `protectionperms.entity.breed.minecraft:cow`
+* Currently preventing entities from breeding is not functioning, in the meantime you can use the item interact event permissions to prevent players from right-clicking on entites with the item that makes them breed
 #### Mounting
 * `protectionperms.entity.mount.<entityID>` - Player can mount `enityName`. 
   * Example: `protectionperms.entity.mount.minecraft:entityhorse`
@@ -57,6 +56,7 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 #### Picking Up
 * Currently preventing players from picking up items is not implmented. See issue [#6](https://github.com/Zerthick/ProtectionPerms/issues/6) for more details.
 #### Dropping
+* Not Recommended. See issue [#13](https://github.com/Zerthick/ProtectionPerms/issues/13)
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
 #### Drop on Death
