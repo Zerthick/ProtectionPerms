@@ -39,7 +39,7 @@ public class UseItemListener {
 
         PermHandler ph = PermHandler.getInstance();
 
-        if (!ph.checkPerm(player, "protectionperms.item.use." + itemId + ".on.self")) {
+        if (!ph.checkPerm(player, "protectionperms.item.use." + itemId)) {
             event.setCancelled(true);
             player.sendMessage(ChatTypes.ACTION_BAR, Text.of(TextColors.RED, "You don't have permission to use " + itemType.getName() + '!'));
         }

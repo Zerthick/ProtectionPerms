@@ -48,6 +48,7 @@ public class ItemListenerManager implements ListenerManager{
         //*listeners.add(new BrewItemListener());
         listeners.add(new EquipItemListener());
         listeners.add(new PickupItemListener());
+        listeners.add(new FishingStartListener());
     }
 
     @Override
