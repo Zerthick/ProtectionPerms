@@ -41,7 +41,10 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
   * Example: `protectionperms.entity.hook.minecraft:sheep`
 
 ### Item Permissions
-#### Primary Usage on Self
+#### General Usage
+* `protectionperms.item.use.<itemID>` - Player can use `itemID` (Example: casting a fishing rod)
+  * Example: `protectionperms.item.use.minecraft:fishing_rod`
+#### Usage on Self
 * `protectionperms.item.use.<itemID>.on.self` - Player can use (right-click) with `itemID` on themselves (Example: eating bread). 
   * Example: `protectionperms.item.use.minecraft:bread.on.self`
 #### Primary Usage on Subject
@@ -54,13 +57,15 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 * `protectionperms.item.equip.<itemID>` - Player can equip `itemID` to an armor slot. 
   * Example: `protectionperms.item.equip.minecraft:iron_chestplate`
 #### Picking Up
-* Currently preventing players from picking up items is not implmented. See issue [#6](https://github.com/Zerthick/ProtectionPerms/issues/6) for more details.
+* `protectionperms.item.pickup.<itemID>` - Player can pickup `itemID` from the ground. 
+  * Example: `protectionperms.item.pickup.minecraft:diamond`
 #### Dropping
 * Not Recommended. See issue [#13](https://github.com/Zerthick/ProtectionPerms/issues/13)
 * `protectionperms.item.drop.<itemID>.dispense` - Player can drop `itemID` on the ground. 
   * Example: `protectionperms.item.drop.minecraft:diamond_sword.dispense`
 #### Drop on Death
-* `protectionperms.item.drop.<itemID>.death` - Player will drop `itemID` on death. 
+* Not Recommended. See issue [#13](https://github.com/Zerthick/ProtectionPerms/issues/13)
+* `protectionperms.item.drop.<itemID>.death` - Player can drop `itemID` on death. 
   * Example: `protectionperms.item.drop.minecraft:diamond.death`
 #### Crafting
 * `protectionperms.item.craft.<itemID>` - Player can craft `itemID`. 
@@ -68,7 +73,6 @@ At this time, ProtectionPerms is completely based off permissions.  Without a gi
 #### Smelting
 * `protectionperms.item.smelt.<itemID>` - Player can smelt `itemID` in a furance. 
   * Example: `protectionperms.item.smelt.minecraft:iron_ore`
-
 #### Use as Fuel
 * `protectionperms.item.fuel.<itemID>` - Player can use `itemID` as fuel in a furance. 
   * Example: `protectionperms.item.fuel.minecraft:coal`
