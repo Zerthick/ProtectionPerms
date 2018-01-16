@@ -100,7 +100,7 @@ public class ProtectionPerms {
 
         // Log Start Up to Console
         getLogger().info(
-                instance.getName() + " version " + instance.getVersion().orElse("")
+                instance.getName() + " version " + instance.getVersion().orElse("unknown")
                         + " enabled!");
     }
 }
