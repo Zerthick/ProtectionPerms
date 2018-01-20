@@ -61,7 +61,7 @@ public class ProtectionPerms {
     public PluginContainer getInstance() {
         return instance;
     }
-    
+
 
     @Listener
     public void onServerInit(GameInitializationEvent event) {
@@ -75,18 +75,27 @@ public class ProtectionPerms {
                 defaultConfigAsset.copyToFile(defaultConfig);
                 configLoader.save(configLoader.load());
             } catch (IOException e) {
-                logger.warn("Error loading default config! Error: " + e.getMessage());
+                logger.error("Error loading default config! Error: " + e.getMessage());
             }
         }
-
         //Load invert
         try {
-            CommentedConfigurationNode linksNode = configLoader.load().getNode("invert");
-            boolean invert = linksNode.getBoolean(false);
-            PermHandler.getInstance().init(invert);
-
+            CommentedConfigurationNode modeNode = configLoader.load().getNode("mode");
+            if (modeNode.isVirtual()) {
+                logger.warn("Config corrupt! Using defaults (whitelist mode)\nDelete " + instance.getId() + ".conf to fix");
+            }
+            String mode = modeNode.getString("whitelist");
+            if (mode.equals("whitelist")) {
+                PermHandler.getInstance().init(false);
+            } else if (mode.equals("blacklist")){
+                PermHandler.getInstance().init(true);
+            } else {
+                //Valid mode not found
+                PermHandler.getInstance().init(false);
+                logger.warn("Mode \"" + mode + "\" is not a vallid mode (whitelist OR blacklist)! Using whitelist mode.");    
+            }
         } catch (IOException e) {
-            logger.warn("Error loading config! Error: " + e.getMessage());
+            logger.error("Error loading config! Error: " + e.getMessage());
         }
 
         DebugLogger.getInstance().setLogger(logger);

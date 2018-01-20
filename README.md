@@ -83,15 +83,34 @@ Whenever a permission requires a blockID you can optionally include `BlockState`
 ### Conflicts
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
 
-### Inverting Permissions
-As of ProtectionPerms v1.2.0 a config file will be generated at `~/config/ProtectionPerms.conf`, the default configuration is shown below:
-```
-# Whether permissions nodes should be inverted 
-# If inverted granting a permission will DENY an action
-invert=false
-```
+## Inverting Permissions
+ProtectionPerms runs in "whitelist" mode, where players cannot perform any actions that have not been granted to them. You can change this behavior by changing the mode in the config file at `~/config/ProtectionPerms.conf`.
 
-If `invert` is set to `true`, the functionality of the permisison nodes will be reversed such that granting a permission node will **deny** the player from completing the action it describes.
+**Whitelist mode prevents players from performing any action unless the according permission node is granted to them.**
+
+**Blacklist mode allows players to perform all actions, unless the according permission node is granted.**
+
+### Default Config
+```
+# ProtectionPerms
+
+# The mode the plugin runs in.
+# Whitelist mode prevents players from performing any action unless the according permission node is granted to them.
+# Blacklist mode allows players to perform all actions, unless the according permission node is granted.
+# Values: whitelist or blacklist
+# Default: whitelist
+mode = whitelist
+```
+## Migrating to v1.4.0
+ProtectionPerms v1.4.0 changed the configuration file, and it must be migrated. The easiest way to do this is to delete the current configuration file.
+
+See (above)[#default-config] for the default configuration file for v1.4.0.
+
+If you set `invert=true` in the current config, change the mode to `blacklist` in the new config. (`mode = blacklist`)
+
+If you never made any changes to the old config file, just delete the old config file. ProtectionPerms will generate a new one for you.
+
+If you have any questions, feel free to open an issue.
 
 ## Support Me
 I will **never** charge money for the use of my plugins, however they do require a significant amount of work to maintain and update. If you'd like to show your support and buy me a cup of tea sometime (I don't drink that horrid coffee stuff :P) you can do so [here](https://www.paypal.me/zerthick)
