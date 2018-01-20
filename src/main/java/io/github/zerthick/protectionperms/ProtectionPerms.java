@@ -75,7 +75,7 @@ public class ProtectionPerms {
                 defaultConfigAsset.copyToFile(defaultConfig);
                 configLoader.save(configLoader.load());
             } catch (IOException e) {
-                logger.warn("Error loading default config! Error: " + e.getMessage());
+                logger.error("Error loading default config! Error: " + e.getMessage());
             }
         }
         //Load invert
@@ -91,7 +91,7 @@ public class ProtectionPerms {
                 PermHandler.getInstance().init(true);
             }
         } catch (IOException e) {
-            logger.warn("Error loading config! Error: " + e.getMessage());
+            logger.error("Error loading config! Error: " + e.getMessage());
         }
 
         DebugLogger.getInstance().setLogger(logger);
