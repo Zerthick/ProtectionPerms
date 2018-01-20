@@ -89,6 +89,10 @@ public class ProtectionPerms {
                 PermHandler.getInstance().init(false);
             } else if (mode.equals("blacklist")){
                 PermHandler.getInstance().init(true);
+            } else {
+                //Valid mode not found
+                PermHandler.getInstance().init(false);
+                logger.warn("Mode \"" + mode + "\" is not a vallid mode (whitelist OR blacklist)! Using whitelist mode.");    
             }
         } catch (IOException e) {
             logger.error("Error loading config! Error: " + e.getMessage());
