@@ -85,8 +85,11 @@ When creating your permission nodes you may run into situations where you have c
 
 ## Inverting Permissions
 ProtectionPerms runs in "whitelist" mode, where players cannot perform any actions that have not been granted to them. You can change this behavior by changing the mode in the config file at `~/config/ProtectionPerms.conf`.
+
 **Whitelist mode prevents players from performing any action unless the according permission node is granted to them.**
+
 **Blacklist mode allows players to perform all actions, unless the according permission node is granted.**
+
 ### Default Config
 ```
 # ProtectionPerms
