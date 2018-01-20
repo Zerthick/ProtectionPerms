@@ -104,7 +104,7 @@ mode = whitelist
 ## Migrating to v1.4.0
 ProtectionPerms v1.4.0 changed the configuration file, and it must be migrated. The easiest way to do this is to delete the current configuration file.
 
-See (above)[#default-config] for the default configuration file for v1.4.0.
+See [above](#default-config) for the default configuration file for v1.4.0.
 
 If you set `invert=true` in the current config, change the mode to `blacklist` in the new config. (`mode = blacklist`)
 
