@@ -84,7 +84,7 @@ Whenever a permission requires a blockID you can optionally include `BlockState`
 When creating your permission nodes you may run into situations where you have conflicting permissions. For instance, you may not be able to place a block even though you have the place permission because you don't have the corresponding use permission for the block as an item, in this case pay attention to the message ProtectionPerms gives you when you try to execute an action, it should point you toward the permission node you need. :wink:
 
 ## Inverting Permissions
-ProtectionPerms runs in "whitelist" mode, where players cannot perform any actions that have not been granted to them. You can change this behavior by changing the mode in the config file at `~/config/ProtectionPerms.conf`.
+ProtectionPerms runs in "whitelist" mode, where players cannot perform any actions that have not been granted to them. You can change this behavior by changing the mode in the config file at `~/config/protectionperms.conf`.
 
 **Whitelist mode prevents players from performing any action unless the according permission node is granted to them.**
 
